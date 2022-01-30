@@ -19,8 +19,6 @@ public class MainController {
     public String uploadFile(@RequestParam("file1") MultipartFile file1,
                              @RequestParam("file2") MultipartFile file2){
 
-
-
         return "result";
     }
 
