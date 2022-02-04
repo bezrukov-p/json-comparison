@@ -1,4 +1,4 @@
-package com.company.model;
+package com.company.model.metadata;
 
 public class Metadata {
     private Description description;

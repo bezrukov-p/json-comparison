@@ -1,4 +1,6 @@
-package com.company.model;
+package com.company.model.artifacts;
+
+import com.company.model.services.Hashes;
 
 public class Mvn {
     private String groupId;

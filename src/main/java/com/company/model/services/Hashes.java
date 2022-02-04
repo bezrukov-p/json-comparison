@@ -1,4 +1,4 @@
-package com.company.model;
+package com.company.model.services;
 
 public class Hashes {
     private String sha1;
