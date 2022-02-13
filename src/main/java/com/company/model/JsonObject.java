@@ -7,9 +7,12 @@ import com.company.model.rpm.Rpm;
 import com.company.model.script.Script;
 import com.company.model.services.Service;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import lombok.Data;
 
 import java.util.List;
 
+
+@Data
 public class JsonObject {
     private Metadata metadata;
     private List<Service> services;
@@ -19,7 +22,7 @@ public class JsonObject {
     private List<Rpm> rpm;
     private Parameters parameters;
 
-    public Metadata getMetadata() {
+    /*public Metadata getMetadata() {
         return metadata;
     }
 
@@ -77,7 +80,7 @@ public class JsonObject {
         this.scripts = scripts;
         this.rpm = rpm;
         this.parameters = parameters;
-    }
+    }*/
 
 
 }
