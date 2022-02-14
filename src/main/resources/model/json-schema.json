@@ -1,0 +1,181 @@
+{
+  "type": "object",
+
+  "properties": {
+    "metadata": {
+      "type": "object",
+
+      "properties": {
+        "description": {
+          "type": "object",
+
+          "properties": {
+            "version": {
+              "type": "integer"
+            }
+          },
+
+          "required": ["version"]
+        },
+        "application": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": ["name"]
+        }
+      },
+      "required": ["description", "application"]
+    },
+    "services": {
+      "type": "array",
+
+      "items": {
+        "type": "object",
+        "properties": {
+          "service-short-name": {
+            "type": "string"
+          },
+          "service_name": {
+            "type": "string"
+          },
+          "artifact_type": {
+            "type": "string"
+          },
+          "docker_registry": {
+            "type": "string"
+          },
+          "docker_image_name": {
+            "type": "string"
+          },
+          "docker_tag": {
+            "type": "string"
+          },
+          "force": {
+            "type": "boolean"
+          },
+          "github_repository": {
+            "type": "string"
+          },
+          "github_branch": {
+            "type": "string"
+          },
+          "github_hash": {
+            "type": "string"
+          },
+          "hashes": {
+            "type": "object",
+            "properties": {
+              "sha1": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              }
+            },
+            "required": ["sha1", "sha256"]
+          }
+        },
+
+        "required": ["service_name", "artifact_type", "docker_registry", "docker_image_name", "docker_tag", "hashes"]
+      },
+
+      "minItems": 0
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+
+      "minItems": 0
+    },
+    "script": {
+      "type": "array",
+
+      "items": {
+        "type": "object",
+        "properties": {
+          "service-short-name": {
+            "type": "string"
+          },
+          "start-point": {
+            "type": "string"
+          },
+          "end-point": {
+            "type": "string"
+          },
+          "script_name": {
+            "type": "string"
+          },
+          "hashes": {
+            "type": "object",
+            "properties": {
+              "sha1": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              }
+            },
+            "required": ["sha1", "sha256"]
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+
+        "required": ["script_name", "hashes", "url"]
+      },
+
+      "minItems": 0
+    },
+    "rpm": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "rpm_repository_name": {
+          "type": "string"
+        },
+        "hashes": {
+          "type": "object",
+          "properties": {
+            "sha1": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            }
+          },
+          "required": ["sha1", "sha256"]
+        },
+        "service-short-name": {
+          "type": "string"
+        }
+      },
+      "required": ["url", "rpm_repository_name", "hashes"]
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "common": {
+          "type": "object"
+        },
+        "services": {
+          "type": "object"
+        }
+      }
+
+    }
+
+
+
+
+  },
+
+  "required": ["metadata", "services", "artifacts", "script", "parameters"]
+}

@@ -41,7 +41,11 @@
             <scope>provided</scope>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>1.0.66</version>
+        </dependency>
 
     </dependencies>
 

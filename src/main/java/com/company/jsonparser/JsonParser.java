@@ -1,6 +1,6 @@
 package com.company.jsonparser;
 
-import com.company.model.JsonObject;
+import com.company.model.MyJsonObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
@@ -22,9 +22,9 @@ public class JsonParser {
         }
     }
 
-    public JsonObject parseJSONToObject(File file) {
+    public MyJsonObject parseJSONToObject(File file) {
         try {
-            JsonObject result = mapper.readValue(file, JsonObject.class);
+            MyJsonObject result = mapper.readValue(file, MyJsonObject.class);
             return result;
         } catch (IOException e) {
             e.printStackTrace();
