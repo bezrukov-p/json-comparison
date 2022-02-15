@@ -1,6 +1,6 @@
 package com.company.jsonparser;
 
-import com.company.model.MyJsonObject;
+import com.company.model.JsonMappedObject;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.networknt.schema.JsonSchema;
@@ -39,9 +39,9 @@ public class JsonParser {
         return jsonSchema.validate(jsonNode);
     }
 
-    public MyJsonObject parseJSONToObject(File file) {
+    public JsonMappedObject parseJSONToObject(File file) {
         try {
-            MyJsonObject result = mapper.readValue(file, MyJsonObject.class);
+            JsonMappedObject result = mapper.readValue(file, JsonMappedObject.class);
             return result;
         } catch (IOException e) {
             e.printStackTrace();

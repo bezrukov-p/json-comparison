@@ -3,7 +3,7 @@ package com.company.controller;
 
 import com.company.fileactions.FileActions;
 import com.company.jsonparser.JsonParser;
-import com.company.model.MyJsonObject;
+import com.company.model.JsonMappedObject;
 import com.networknt.schema.ValidationMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +48,7 @@ public class MainController {
                 validationResult1.forEach(vm -> System.out.println(vm.getMessage()));
             }
             else {
-                MyJsonObject jsonObj1 = jsonParser.parseJSONToObject(jsonFile1);
+                JsonMappedObject jsonObj1 = jsonParser.parseJSONToObject(jsonFile1);
                 System.out.println(jsonObj1);
             }
         }
@@ -62,7 +62,7 @@ public class MainController {
                 validationResult2.forEach(vm -> System.out.println(vm.getMessage()));
             }
             else {
-                MyJsonObject jsonObj2 = jsonParser.parseJSONToObject(jsonFile2);
+                JsonMappedObject jsonObj2 = jsonParser.parseJSONToObject(jsonFile2);
                 System.out.println(jsonObj2);
             }
         }

@@ -10,9 +10,11 @@
           "type": "object",
 
           "properties": {
-            "version": {"type": "integer"}
+            "version": {
+              "type": "integer"
+            }
           },
-
+          "additionalProperties": false,
           "required": ["version"]
         },
         "application": {
@@ -20,9 +22,11 @@
           "properties": {
             "name": {"type": "string"}
           },
+          "additionalProperties": false,
           "required": ["name"]
         }
       },
+      "additionalProperties": false,
       "required": ["description", "application"]
     },
     "services": {
@@ -47,9 +51,11 @@
               "sha1": {"type": "string"},
               "sha256": {"type": "string"}
             },
+            "additionalProperties": false,
             "required": ["sha1", "sha256"]
           }
         },
+        "additionalProperties": false,
 
         "required": ["service_name", "artifact_type", "docker_registry", "docker_image_name", "docker_tag", "hashes"]
       },
@@ -59,7 +65,93 @@
     "artifacts": {
       "type": "array",
       "items": {
-        "type": "object"
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "mvn": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "groupId": {
+                      "type": "string"
+                    },
+                    "artifactId": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "service_name": {
+                      "type": "string"
+                    },
+                    "classifier": {
+                      "type": "string"
+                    },
+                    "mvn_type": {
+                      "type": "string"
+                    },
+                    "mvn_repository": {
+                      "type": "string"
+                    },
+                    "hashes": {
+                      "type": "object",
+                      "properties": {
+                        "sha1": {"type": "string"},
+                        "sha256": {"type": "string"}
+                      },
+                      "additionalProperties": false,
+                      "required": ["sha1", "sha256"]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": ["groupId", "artifactId", "version", "mvn_type", "mvn_repository", "hashes"]
+                },
+                "minItems": 1
+
+              },
+              "target_repository": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+
+            "required": ["mvn", "target_repository"]
+          }, {
+            "type": "object",
+            "properties": {
+              "service-short-name": {
+                "type": "string"
+              },
+              "service_name": {
+                "type": "string"
+              },
+              "hashes": {
+                "type": "object",
+                "properties": {
+                  "sha1": {"type": "string"},
+                  "sha256": {"type": "string"}
+                },
+                "additionalProperties": false,
+                "required": ["sha1", "sha256"]
+              },
+              "file": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1,
+                "maxItems": 1
+              },
+              "target_repository": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": ["hashes", "file", "target_repository"]
+          }
+        ]
       },
 
       "minItems": 0
@@ -69,6 +161,7 @@
 
       "items": {
         "type": "object",
+
         "properties": {
           "service-short-name": {"type": "string"},
           "start-point": {"type": "string"},
@@ -80,10 +173,12 @@
               "sha1": {"type": "string"},
               "sha256": {"type": "string"}
             },
+            "additionalProperties": false,
             "required": ["sha1", "sha256"]
           },
           "url": {"type": "string"}
         },
+        "additionalProperties": false,
 
         "required": ["script_name", "hashes", "url"]
       },
@@ -101,10 +196,12 @@
             "sha1": {"type": "string"},
             "sha256": {"type": "string"}
           },
+          "additionalProperties": false,
           "required": ["sha1", "sha256"]
         },
         "service-short-name": {"type": "string"}
       },
+      "additionalProperties": false,
       "required": ["url", "rpm_repository_name", "hashes"]
     },
     "parameters": {
@@ -127,6 +224,7 @@
       }
     }
   },
+  "additionalProperties": false,
 
   "required": ["metadata", "services", "artifacts", "script", "parameters"]
 }

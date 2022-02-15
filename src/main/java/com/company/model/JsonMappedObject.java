@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Data
-public class MyJsonObject {
+public class JsonMappedObject {
     private Metadata metadata;
     private List<Service> services;
     private List<Artifact> artifacts;
