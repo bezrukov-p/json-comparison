@@ -19,6 +19,6 @@ public class MyJsonObject {
     private List<Artifact> artifacts;
     @JsonSetter("script")
     private List<Script> scripts;
-    private List<Rpm> rpm;
+    private Rpm rpm;
     private Parameters parameters;
 }
