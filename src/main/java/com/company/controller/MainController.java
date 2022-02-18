@@ -2,6 +2,7 @@ package com.company.controller;
 
 
 import com.company.fileactions.FileActions;
+import com.company.jsoncomparison.JsonComparison;
 import com.company.jsonparser.JsonParser;
 import com.company.model.JsonMappedObject;
 import com.networknt.schema.ValidationMessage;
@@ -66,6 +67,8 @@ public class MainController {
                 System.out.println(jsonObj2);
             }
         }
+        if (isJSON1Valid && isJSON2Valid)
+            JsonComparison.PrintMessagesAboutComparing(jsonFile1, jsonFile2);
 
 
     }
