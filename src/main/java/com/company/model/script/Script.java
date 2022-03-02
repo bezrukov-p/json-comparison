@@ -16,4 +16,13 @@ public class Script {
     private String scriptName;
     private Hashes hashes;
     private String url;
+
+    public boolean ComparisonByMandateFields(Script script) {
+        if (this.scriptName.equals(script.getScriptName()) &&
+                this.url.equals(script.getUrl())) {
+            return true;
+        }
+        else
+            return false;
+    }
 }

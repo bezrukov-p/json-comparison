@@ -17,11 +17,13 @@ public final class FlatMapUtil {
     }
 
     public static Map<String, Object> flatten(Map<String, Object> map) {
+
         return map.entrySet().stream()
                 .flatMap(FlatMapUtil::flatten)
                 .collect(LinkedHashMap::new, (m, e) -> m.put("/" + e.getKey(), e.getValue()), LinkedHashMap::putAll);
     }
 
+    //рекурсивная функция
     private static Stream<Map.Entry<String, Object>> flatten(Map.Entry<String, Object> entry) {
 
         if (entry == null) {

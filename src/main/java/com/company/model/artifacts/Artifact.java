@@ -18,4 +18,8 @@ public class Artifact {
     private String serviceName;
     private Hashes hashes;
     private List<String> file;
+
+    /*public boolean ComparisonByMandateFields(Artifact artifact) {
+
+    }*/
 }

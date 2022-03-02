@@ -2,12 +2,14 @@ package com.company.controller;
 
 
 import com.company.fileactions.FileActions;
+import com.company.forui.ForUI;
 import com.company.jsoncomparison.JsonComparison;
 import com.company.jsonparser.JsonParser;
 import com.company.model.JsonMappedObject;
 import com.networknt.schema.ValidationMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +23,8 @@ import java.util.Set;
 public class MainController {
     @Autowired
     JsonParser jsonParser;
+    @Autowired
+    ForUI forUI;
 
     @GetMapping("/main")
     public String MainForm() {
@@ -29,18 +33,30 @@ public class MainController {
 
 
     @PostMapping("/main")
-    public void uploadFile(@RequestParam("file1") MultipartFile file1,
-                             @RequestParam("file2") MultipartFile file2) throws IOException {
-        //из MultipartFile в File
+    public String uploadFile(@RequestParam("file1") MultipartFile file1,
+                           @RequestParam("file2") MultipartFile file2,
+                           Model model) throws IOException {
         File jsonFile1 = FileActions.uploadFile(file1);
         File jsonFile2 = FileActions.uploadFile(file2);
+        model.addAttribute("file1", jsonFile1.getName());
+        model.addAttribute("file2", jsonFile2.getName());
 
-        //проверка на правильно структурированный json
-        //и валидация файлов, если есть ошибки, то вывод их в консоль
-        //если валидация успешна, то мапинг объекта и вывод его в консоль
         boolean isJSON1Valid = jsonParser.isJSONValid(jsonFile1);
         boolean isJSON2Valid = jsonParser.isJSONValid(jsonFile2);
-        if (!isJSON1Valid)
+
+        if (!isJSON1Valid || !isJSON2Valid) {
+            forUI.jsonNotValid(jsonFile1, jsonFile2, model);
+            return "main";
+        }
+
+        Set<ValidationMessage> validationResult1 = jsonParser.getValidationMessages(jsonFile1);
+        Set<ValidationMessage> validationResult2 = jsonParser.getValidationMessages(jsonFile2);
+        if (!validationResult1.isEmpty() || !validationResult2.isEmpty()) {
+            forUI.jsonNotValidFields(validationResult1, validationResult2, model);
+            return "json-not-valid";
+        }
+
+        /*if (!isJSON1Valid)
             System.out.println(file1.getOriginalFilename() + " не является json");
         else {
             Set<ValidationMessage> validationResult1 = jsonParser.getValidationMessages(jsonFile1);
@@ -53,7 +69,6 @@ public class MainController {
                 System.out.println(jsonObj1);
             }
         }
-
         if (!isJSON2Valid)
             System.out.println(file2.getOriginalFilename() + " не является json");
         else {
@@ -66,11 +81,14 @@ public class MainController {
                 JsonMappedObject jsonObj2 = jsonParser.parseJSONToObject(jsonFile2);
                 System.out.println(jsonObj2);
             }
-        }
+        }*/
+
+
+
         if (isJSON1Valid && isJSON2Valid)
             JsonComparison.PrintMessagesAboutComparing(jsonFile1, jsonFile2);
 
-
+        return "main";
     }
 
 
