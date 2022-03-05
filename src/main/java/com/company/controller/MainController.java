@@ -3,9 +3,8 @@ package com.company.controller;
 
 import com.company.fileactions.FileActions;
 import com.company.forui.ForUI;
-import com.company.jsoncomparison.JsonComparison;
 import com.company.jsonparser.JsonParser;
-import com.company.model.JsonMappedObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.networknt.schema.ValidationMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,39 +55,10 @@ public class MainController {
             return "json-not-valid";
         }
 
-        /*if (!isJSON1Valid)
-            System.out.println(file1.getOriginalFilename() + " не является json");
-        else {
-            Set<ValidationMessage> validationResult1 = jsonParser.getValidationMessages(jsonFile1);
-            if (!validationResult1.isEmpty()) {
-                System.out.println(jsonFile1.getName() + " не валидный");
-                validationResult1.forEach(vm -> System.out.println(vm.getMessage()));
-            }
-            else {
-                JsonMappedObject jsonObj1 = jsonParser.parseJSONToObject(jsonFile1);
-                System.out.println(jsonObj1);
-            }
-        }
-        if (!isJSON2Valid)
-            System.out.println(file2.getOriginalFilename() + " не является json");
-        else {
-            Set<ValidationMessage> validationResult2 = jsonParser.getValidationMessages(jsonFile2);
-            if (!validationResult2.isEmpty()) {
-                System.out.println(jsonFile2.getName() + " не валидный");
-                validationResult2.forEach(vm -> System.out.println(vm.getMessage()));
-            }
-            else {
-                JsonMappedObject jsonObj2 = jsonParser.parseJSONToObject(jsonFile2);
-                System.out.println(jsonObj2);
-            }
-        }*/
 
+        forUI.resultOfComparingForUI(jsonFile1, jsonFile2, model);
 
-
-        if (isJSON1Valid && isJSON2Valid)
-            JsonComparison.PrintMessagesAboutComparing(jsonFile1, jsonFile2);
-
-        return "main";
+        return "result";
     }
 
 

@@ -1,74 +1,93 @@
 package com.company.differentbetweenobjects;
 
-import com.company.differentbetweenobjects.diffbetweenarrays.DiffBetweenArtifacts;
+import com.company.differentbetweenobjects.diffbetweenarrays.DiffBetweenParametersServices;
 import com.company.differentbetweenobjects.diffbetweenarrays.DiffBetweenScripts;
 import com.company.differentbetweenobjects.diffbetweenarrays.DiffBetweenServices;
-import com.company.model.artifacts.Artifact;
 import com.company.model.script.Script;
 import com.company.model.services.Service;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class DifferenceBetweenObjects {
 
-    public DiffBetweenServices DifferenceBetweenListsOfServices(List<Service> services1, List<Service> services2) {
-        HashSet<Service> servicesHash1 = new LinkedHashSet<>(services1);
-        HashSet<Service> servicesHash2 = new LinkedHashSet<>(services2);
+    public DiffBetweenServices differenceBetweenListsOfServices(List<Service> services1, List<Service> services2) {
+        Set<Service> servicesSet1 = new LinkedHashSet<>(services1);
+        Set<Service> servicesSet2 = new LinkedHashSet<>(services2);
 
-        DiffBetweenServices diffBtwServices = new DiffBetweenServices();
-        for(Service service1 : servicesHash1) {
-            if (servicesHash2.contains(service1)) {
-                diffBtwServices.AddToEntriesInCommon(service1);
-                servicesHash1.remove(service1);
-                servicesHash2.remove(service1);
+        DiffBetweenServices result = new DiffBetweenServices();
+
+        Iterator<Service> itr = servicesSet1.iterator();
+        while(itr.hasNext()) {
+            Service service = itr.next();
+            if (servicesSet2.contains(service)) {
+                result.addToEntriesInCommon(service);
+                itr.remove();
+                servicesSet2.remove(service);
             }
         }
-        for(Service service1 : servicesHash1) {
-            for(Service service2 : servicesHash2) {
+
+        Iterator<Service> itr1 = servicesSet1.iterator();
+        Iterator<Service> itr2 = servicesSet2.iterator();
+        while(itr1.hasNext()) {
+            Service service1 = itr1.next();
+            while(itr2.hasNext()) {
+                Service service2 = itr2.next();
                 if (service1.ComparisonByMandateFields(service2)) {
-                    diffBtwServices.AddToEntriesDifferingOnLeft(service1);
-                    diffBtwServices.AddToEntriesDifferingOnRight(service2);
-                    servicesHash1.remove(service1);
-                    servicesHash2.remove(service2);
+                    result.addToEntriesDifferingOnLeft(service1);
+                    result.addToEntriesDifferingOnRight(service2);
+                    itr1.remove();
+                    itr2.remove();
+                    break;
                 }
             }
         }
-        diffBtwServices.AddToEntriesOnlyOnLeft(servicesHash1);
-        diffBtwServices.AddToEntriesOnlyOnRight(servicesHash2);
 
-        return diffBtwServices;
+        result.addToEntriesOnlyOnLeft(servicesSet1);
+        result.addToEntriesOnlyOnRight(servicesSet2);
+
+        return result;
     }
 
-    public DiffBetweenScripts DifferenceBetweenListsOfScripts(List<Script> scripts1, List<Script> scripts2) {
-        HashSet<Script> scriptsHash1 = new LinkedHashSet<>(scripts1);
-        HashSet<Script> scriptsHash2 = new LinkedHashSet<>(scripts2);
+    public DiffBetweenScripts differenceBetweenListsOfScripts(List<Script> scripts1, List<Script> scripts2) {
+        Set<Script> scriptsSet1 = new LinkedHashSet<>(scripts1);
+        Set<Script> scriptsSet2 = new LinkedHashSet<>(scripts2);
 
-        DiffBetweenScripts diffBtwScripts = new DiffBetweenScripts();
-        for(Script script1 : scriptsHash1) {
-            if (scriptsHash2.contains(script1)) {
-                diffBtwScripts.AddToEntriesInCommon(script1);
-                scriptsHash1.remove(script1);
-                scriptsHash2.remove(script1);
+        DiffBetweenScripts result = new DiffBetweenScripts();
+
+        Iterator<Script> itr = scriptsSet1.iterator();
+        while (itr.hasNext()) {
+            Script script = itr.next();
+            if(scriptsSet2.contains(script)) {
+                result.addToEntriesInCommon(script);
+                itr.remove();
+                scriptsSet2.remove(script);
             }
         }
-        for(Script script1 : scriptsHash1) {
-            for(Script script2 : scriptsHash2) {
+
+        Iterator<Script> itr1 = scriptsSet1.iterator();
+        Iterator<Script> itr2 = scriptsSet2.iterator();
+
+        while(itr1.hasNext()) {
+            Script script1 = itr1.next();
+            while(itr2.hasNext()) {
+                Script script2 = itr2.next();
                 if (script1.ComparisonByMandateFields(script2)) {
-                    diffBtwScripts.AddToEntriesDifferingOnLeft(script1);
-                    diffBtwScripts.AddToEntriesDifferingOnRight(script2);
-                    scriptsHash1.remove(script1);
-                    scriptsHash2.remove(script2);
+                    result.addToEntriesDifferingOnLeft(script1);
+                    result.addToEntriesDifferingOnRight(script2);
+                    itr1.remove();
+                    itr2.remove();
+                    break;
                 }
             }
         }
-        diffBtwScripts.AddToEntriesOnlyOnLeft(scriptsHash1);
-        diffBtwScripts.AddToEntriesOnlyOnRight(scriptsHash2);
 
-        return diffBtwScripts;
+
+        result.addToEntriesOnlyOnLeft(scriptsSet1);
+        result.addToEntriesOnlyOnRight(scriptsSet2);
+
+        return result;
     }
 
     /*public DiffBetweenArtifacts DifferenceBetweenListsOfArtifacts(List<Artifact> artifacts1, List<Artifact> artifacts2) {
@@ -98,6 +117,32 @@ public class DifferenceBetweenObjects {
 
         return diffBtwArtifacts;
     }*/
+
+    public DiffBetweenParametersServices diffBetweenParametersServices(Map<String, Map<String, String>> services1,
+                                                                       Map<String, Map<String, String>> services2) {
+        Map<String, Map<String, String>> s1 = new LinkedHashMap<>(services1);
+        Map<String, Map<String, String>> s2 = new LinkedHashMap<>(services2);
+        DiffBetweenParametersServices result = new DiffBetweenParametersServices();
+
+        for (Map.Entry<String, Map<String, String>> entry : s1.entrySet()) {
+            String key = entry.getKey();
+            if (s2.containsKey(key)) {
+                if (s1.get(key).equals(s2.get(key))) {
+                    result.getEntriesInCommon().put(key, entry.getValue());
+                } else {
+                    result.getEntriesDifferingOnLeft().put(key, s1.get(key));
+                    result.getEntriesDifferingOnRight().put(key, s2.get(key));
+                }
+                s1.remove(key);
+                s2.remove(key);
+            }
+        }
+
+        result.getEntriesOnlyOnLeft().putAll(s1);
+        result.getEntriesOnlyOnRight().putAll(s2);
+
+        return result;
+    }
 
 
 

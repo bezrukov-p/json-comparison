@@ -23,19 +23,19 @@ public class DiffBetweenServices {
         entriesOnlyOnRight = new ArrayList<>();
     }
 
-    public void AddToEntriesDifferingOnLeft(Service service) {
+    public void addToEntriesDifferingOnLeft(Service service) {
         entriesDifferingOnLeft.add(service);
     }
-    public void AddToEntriesDifferingOnRight(Service service) {
-        entriesDifferingOnLeft.add(service);
+    public void addToEntriesDifferingOnRight(Service service) {
+        entriesDifferingOnRight.add(service);
     }
-    public void AddToEntriesInCommon(Service service) {
+    public void addToEntriesInCommon(Service service) {
         entriesInCommon.add(service);
     }
-    public void AddToEntriesOnlyOnLeft(Collection<Service> services) {
-        entriesDifferingOnLeft.addAll(services);
+    public void addToEntriesOnlyOnLeft(Collection<Service> services) {
+        entriesOnlyOnLeft.addAll(services);
     }
-    public void AddToEntriesOnlyOnRight(Collection<Service> services) {
+    public void addToEntriesOnlyOnRight(Collection<Service> services) {
         entriesOnlyOnRight.addAll(services);
     }
 }

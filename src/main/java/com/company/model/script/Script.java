@@ -25,4 +25,8 @@ public class Script {
         else
             return false;
     }
+
+    public String fieldsToJsonString() {
+        return this.toString();
+    }
 }

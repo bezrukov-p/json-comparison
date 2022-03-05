@@ -1,34 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Результат сравнения</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/style.css" th:href="@{/style/style.css}"/>
 </head>
 <body>
+    <a href="/main"> main</a>
+
     <div>
         <p>{</p>
-        <div >
+
+        <!--metadata-->
+        <div>
             <p>"metadata: {</p>
+            <!--description-->
             <div>
                 <p>"description": {</p>
-                <p>"version": </p>
+                    <p th:class="${!isVersionEquals} ? back-orange : '' ">"version": <span th:text="${version1}"/></p>
                 <p>}</p>
             </div>
+            <!--application-->
             <div>
                 <p>"application": {</p>
-                <p>"name": </p>
+                    <p th:class="${!isNameEquals} ? back-orange : '' ">"name": <span th:text="${name1}"/></p>
                 <p>}</p>
             </div>
+            <p>},</p>
+        </div>
+
+        <!--services-->
+        <div>
+            <p>"services": [</p>
+            <th:block th:each="service : ${res.getDiffBetweenServices().getEntriesDifferingOnLeft()}">
+                <div th:class="back-orange">
+                    <p>{</p>
+                    <p th:text="${service.fieldsToJsonString()}"></p>
+                    <p>}</p>
+                </div>
+            </th:block>
+            <th:block th:each="service : ${res.getDiffBetweenServices().getEntriesInCommon()}">
+                <div>
+                    <p>{</p>
+                    <p th:text="${service.fieldsToJsonString()}"></p>
+                    <p>}</p>
+                </div>
+            </th:block>
+            <th:block th:each="service : ${res.getDiffBetweenServices().getEntriesOnlyOnLeft()}">
+                <div th:class="back-red">
+                    <p>{</p>
+                    <p th:text="${service.fieldsToJsonString()}"></p>
+                    <p>}</p>
+                </div>
+            </th:block>
+            <p>]</p>
+        </div>
+
+        <!--script-->
+        <div>
+            <p>"script": [</p>
+            <th:block th:each="script : ${res.getDiffBetweenScripts().getEntriesDifferingOnLeft()}">
+                <div th:class="back-orange">
+                    <p>{</p>
+                    <p th:text="${script.fieldsToJsonString()}"></p>
+                    <p>}</p>
+                </div>
+            </th:block>
+            <th:block th:each="script : ${res.getDiffBetweenScripts().getEntriesInCommon()}">
+                <div>
+                    <p>{</p>
+                    <p th:text="${script.fieldsToJsonString()}"></p>
+                    <p>}</p>
+                </div>
+            </th:block>
+            <th:block th:each="script : ${res.getDiffBetweenScripts().getEntriesOnlyOnLeft()}">
+                <div th:class="back-red">
+                    <p>{</p>
+                    <p th:text="${script.fieldsToJsonString()}"></p>
+                    <p>}</p>
+                </div>
+            </th:block>
+            <p>]</p>
+        </div>
+
+        <!--parameters-->
+        <div>
+            <p>"parameters: {</p>
+            <!--common-->
+            <div>
+
+            </div>
+
+            <!--services-->
+            <div>
+
+            </div>
+
             <p>}</p>
         </div>
 
-        <div>
 
-        </div>
 
         <p>}</p>
     </div>
-
-    <a href="/main"> main</a>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.company.differentbetweenobjects.diffbetweenarrays;
 
 import com.company.model.script.Script;
-import com.company.model.services.Service;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -24,19 +23,19 @@ public class DiffBetweenScripts {
         entriesOnlyOnRight = new ArrayList<>();
     }
 
-    public void AddToEntriesDifferingOnLeft(Script script) {
+    public void addToEntriesDifferingOnLeft(Script script) {
         entriesDifferingOnLeft.add(script);
     }
-    public void AddToEntriesDifferingOnRight(Script script) {
-        entriesDifferingOnLeft.add(script);
+    public void addToEntriesDifferingOnRight(Script script) {
+        entriesDifferingOnRight.add(script);
     }
-    public void AddToEntriesInCommon(Script script) {
+    public void addToEntriesInCommon(Script script) {
         entriesInCommon.add(script);
     }
-    public void AddToEntriesOnlyOnLeft(Collection<Script> scripts) {
-        entriesDifferingOnLeft.addAll(scripts);
+    public void addToEntriesOnlyOnLeft(Collection<Script> scripts) {
+        entriesOnlyOnLeft.addAll(scripts);
     }
-    public void AddToEntriesOnlyOnRight(Collection<Script> scripts) {
+    public void addToEntriesOnlyOnRight(Collection<Script> scripts) {
         entriesOnlyOnRight.addAll(scripts);
     }
 }

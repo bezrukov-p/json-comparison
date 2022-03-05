@@ -24,16 +24,16 @@ public class DiffBetweenArtifacts {
         entriesOnlyOnRight = new ArrayList<>();
     }
 
-    public void AddToEntriesDifferingOnLeft(Artifact artifact) {
+    public void addToEntriesDifferingOnLeft(Artifact artifact) {
         entriesDifferingOnLeft.add(artifact);
     }
-    public void AddToEntriesDifferingOnRight(Artifact artifact) {
+    public void addToEntriesDifferingOnRight(Artifact artifact) {
         entriesDifferingOnLeft.add(artifact);
     }
-    public void AddToEntriesInCommon(Artifact artifact) {
+    public void addToEntriesInCommon(Artifact artifact) {
         entriesInCommon.add(artifact);
     }
-    public void AddToEntriesOnlyOnLeft(Collection<Artifact> artifacts) {
+    public void addToEntriesOnlyOnLeft(Collection<Artifact> artifacts) {
         entriesDifferingOnLeft.addAll(artifacts);
     }
     public void AddToEntriesOnlyOnRight(Collection<Artifact> artifacts) {

@@ -184,7 +184,13 @@
         "common": {
             "some-param": "test",
             "some-other-param": "test2",
-            "some-else-param": "test3"
+            "some-else-param": "test3",
+            "some-param1": "test1",
+            "some-other-param2": "test22",
+            "some-else-param3": "test33",
+            "some-param2": "test2",
+            "some-other-param22": "test22",
+            "some-else-param33": "test33"
         },
         "services": {
             "service_name_1": {																		

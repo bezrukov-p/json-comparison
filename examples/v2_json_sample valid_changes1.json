@@ -4,32 +4,18 @@
             "version": 3
         },
         "application": {
-            "name": "application_name1321"
+            "name": "application_name13211"
         }
     },
     "services": [
         {
-            "service-short-name": "TEST",
+            "service-short-name": "WHITE",
             "service_name": "test-service-2",
             "artifact_type": "zip",
             "docker_registry":"docker.io:12345",
-            "docker_image_name": "busybox3", 
+            "docker_image_name": "busybox3",
             "docker_tag": "1.33.0",
-            "force": true,
-            "github_repository": "https://github.com/mirror/busybox",
-            "github_hash": "qwerty123456789qwerty123456789qwerty111q1",
-            "hashes": {
-                "sha1": "749d65718qwec394eae890e7137898419b48b023",
-                "sha256": "5123772326b5821234a130987930e1c46cvbnf10ce768199d56e4b874dfghjkl"
-            }
-        },
-        {
-            "service_name": "test-service-2",
-            "artifact_type": "zip",
-            "docker_registry": "docker.io:12345",
-            "docker_image_name": "busybox1", 
-            "docker_tag": "1.33.1",
-            "force": true,
+            "force": false,
             "github_repository": "https://github.com/mirror/busybox",
             "github_branch": "master",
             "github_hash": "qwerty123456789qwerty123456789qwerty111q1",
@@ -39,14 +25,45 @@
             }
         },
         {
-            "service_name": "test-service-2",
+            "service-short-name": "YELLOW",
+            "service_name": "test-service-232",
+            "artifact_type": "zip11",
+            "docker_registry":"docker.io:1234532131",
+            "docker_image_name": "busybox3222",
+            "docker_tag": "1.33.02",
+            "force": false,
+            "github_repository": "https://github.com/mirror/busyboxs1",
+            "github_branch": "master223",
+            "github_hash": "qwerty123456789qwerty123456789qwerty111q1321",
+            "hashes": {
+                "sha1": "749d65718qwec394eae890e7137898419b48b021",
+                "sha256": "5123772326b5821234a130987930e1c46cvbnf10ce768199d56e4b874dfghjkl"
+            }
+        },
+        {
+            "service_name": "WHITE2",
             "artifact_type": "zip",
             "docker_registry": "docker.io:12345",
-            "docker_image_name": "busybox", 
+            "docker_image_name": "busybox",
             "docker_tag": "1.33.0",
             "hashes": {
                 "sha1": "749d65718qwec394eae890e7137898419b48b021",
                 "sha256": "5123772326b5821234a130987930e1c46cvbnf10ce768199d56e4b874dfghjkl"
+            }
+        },
+        {
+            "service_name": "YELLOW2",
+            "artifact_type": "zip",
+            "docker_registry": "docker.io:12345",
+            "docker_image_name": "busybox132",
+            "docker_tag": "1.33.111",
+            "force": true,
+            "github_repository": "https://github.com/mirror/busybox32",
+            "github_branch": "maste11r",
+            "github_hash": "qwerty123456789qwerty123456789qwerty111q1321",
+            "hashes": {
+                "sha1": "749d65718qwec394eae890e7137898419b32131248b0221",
+                "sha256": "5123772326b5821234a130987930e1c46cvbnf10ce763218199d56e4b874dfg3hjkl"
             }
         }
     ],
@@ -148,10 +165,21 @@
     ],
     "script": [
         {
+            "service-short-name": "mongocli",
+            "start-point": "start-point.sh",
+            "end-point": "end-point.sh",
+            "script_name": "RED",
+            "hashes": {
+                "sha1": "87jf7b9f6055bd924fd83e63ab1e0f16a57680dd",
+                "sha256": "4di75ghj3d976b05b30ce3ce683b561d2bc726eb183e089dd80c8c9ae0ddb1951"
+            },
+            "url": "https://fastdl.mongodb.org/mongocli/mongocli_1.12.0_windows_x86_642.zip"
+        },
+        {
             "service-short-name": "mongocl",
             "start-point": "start-point.sh",
             "end-point": "end-point.sh",
-            "script_name": "some_script_name",
+            "script_name": "WHITE",
             "hashes": {
                 "sha1": "87jf7b9f6055bd924fd83e63ab1e0f16a57680dd",
                 "sha256": "4di75ghj3d976b05b30ce3ce683b561d2bc726eb183e089dd80c8c9ae0ddb195"
@@ -162,7 +190,7 @@
             "service-short-name": "mongocli",
             "start-point": "start-point.sh",
             "end-point": "end-point.sh",
-            "script_name": "some_script_name",
+            "script_name": "YELLOW",
             "hashes": {
                 "sha1": "87jf7b9f6055bd924fd83e63ab1e0f16a57680dd",
                 "sha256": "4di75ghj3d976b05b30ce3ce683b561d2bc726eb183e089dd80c8c9ae0ddb1951"

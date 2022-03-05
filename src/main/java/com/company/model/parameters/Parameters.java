@@ -2,6 +2,7 @@ package com.company.model.parameters;
 
 import lombok.Data;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Data
