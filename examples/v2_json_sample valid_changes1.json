@@ -71,7 +71,7 @@
         {
             "mvn": [
                 {
-                    "groupId": "log4j",
+                    "groupId": "log4jREEEED",
                     "artifactId": "log4j",
                     "version": "1.2.17",
                     "service_name": "test-service-1",
@@ -141,7 +141,7 @@
             ],
             "target_repository": "file"
         }, {
-            "service_name": "jenkins-2.223",
+            "service_name": "ORANGEright",
             "hashes": {
                 "sha1": "fun7f57f7ff89adcff04c223a01cd06ab0932c21",
                 "sha256": "3a38b40bf1b906146f6d330b8ad6211d9a50a9a97b16f92b5e6ce40b93a69238"

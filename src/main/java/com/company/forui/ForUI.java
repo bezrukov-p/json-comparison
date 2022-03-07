@@ -1,5 +1,6 @@
 package com.company.forui;
 
+import com.company.differentbetweenobjects.DiffBetweenArtifacts;
 import com.company.differentbetweenobjects.DiffBetweenParametersServices;
 import com.company.differentbetweenobjects.DiffBetweenScripts;
 import com.company.differentbetweenobjects.DiffBetweenServices;
@@ -56,6 +57,10 @@ public class ForUI {
         //для services
         comparisonResultForUI.setDiffBetweenServices
                 (new DiffBetweenServices(jsonObj1.getServices(), jsonObj2.getServices()));
+
+        //для artifacts
+        comparisonResultForUI.setDiffBetweenArtifacts(
+                new DiffBetweenArtifacts(jsonObj1.getArtifacts(), jsonObj2.getArtifacts()));
 
         //для scripts
         comparisonResultForUI.setDiffBetweenScripts

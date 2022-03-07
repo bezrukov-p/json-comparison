@@ -40,9 +40,9 @@ public class DiffBetweenServices {
         }
 
         Iterator<Service> itr1 = servicesSet1.iterator();
-        Iterator<Service> itr2 = servicesSet2.iterator();
         while(itr1.hasNext()) {
             Service service1 = itr1.next();
+            Iterator<Service> itr2 = servicesSet2.iterator();
             while(itr2.hasNext()) {
                 Service service2 = itr2.next();
                 if (service1.ComparisonByMandateFields(service2)) {
