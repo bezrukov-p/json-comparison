@@ -7,8 +7,8 @@
 </head>
 <body>
     <a href="/main"> main</a>
-
     <div>
+
         <p>{</p>
 
         <!--metadata-->
@@ -17,13 +17,13 @@
             <!--description-->
             <div>
                 <p>"description": {</p>
-                    <p th:class="${!isVersionEquals} ? back-orange : '' ">"version": <span th:text="${version1}"/></p>
+                    <p th:class="${!isVersionEquals} ? orange : '' ">"version": <span th:text="${version1}"/></p>
                 <p>}</p>
             </div>
             <!--application-->
             <div>
                 <p>"application": {</p>
-                    <p th:class="${!isNameEquals} ? back-orange : '' ">"name": <span th:text="${name1}"/></p>
+                    <p th:class="${!isNameEquals} ? orange : '' ">"name": <span th:text="${name1}"/></p>
                 <p>}</p>
             </div>
             <p>},</p>
@@ -33,7 +33,7 @@
         <div>
             <p>"services": [</p>
             <th:block th:each="service : ${res.getDiffBetweenServices().getEntriesDifferingOnLeft()}">
-                <div th:class="back-orange">
+                <div th:class="orange">
                     <p>{</p>
                     <p th:text="${service.fieldsToJsonString()}"></p>
                     <p>}</p>
@@ -47,7 +47,7 @@
                 </div>
             </th:block>
             <th:block th:each="service : ${res.getDiffBetweenServices().getEntriesOnlyOnLeft()}">
-                <div th:class="back-red">
+                <div th:class="red">
                     <p>{</p>
                     <p th:text="${service.fieldsToJsonString()}"></p>
                     <p>}</p>
@@ -60,7 +60,7 @@
         <div>
             <p>"script": [</p>
             <th:block th:each="script : ${res.getDiffBetweenScripts().getEntriesDifferingOnLeft()}">
-                <div th:class="back-orange">
+                <div th:class="orange">
                     <p>{</p>
                     <p th:text="${script.fieldsToJsonString()}"></p>
                     <p>}</p>
@@ -74,7 +74,7 @@
                 </div>
             </th:block>
             <th:block th:each="script : ${res.getDiffBetweenScripts().getEntriesOnlyOnLeft()}">
-                <div th:class="back-red">
+                <div th:class="red">
                     <p>{</p>
                     <p th:text="${script.fieldsToJsonString()}"></p>
                     <p>}</p>
@@ -83,25 +83,62 @@
             <p>]</p>
         </div>
 
+        <!--rpm-->
+        <div th:if="${isRpmLeftExists}">
+            <p>"rpm": {</p>
+            <div th:each="rpm : ${res.getDiffBetweenRpmForUI().getRpmLeft()}">
+                <p th:text="${rpm.key}" th:class="${rpm.value}"></p>
+            </div>
+            <p>"hashes": {</p>
+                <div th:each="rpmHash : ${res.getDiffBetweenRpmForUI().getRpmHashLeft()}">
+                <p th:text="${rpmHash.key}" th:class="${rpmHash.value}"></p>
+                </div>
+            <p>}</p>
+            <p>}</p>
+        </div>
+
         <!--parameters-->
         <div>
             <p>"parameters: {</p>
             <!--common-->
-            <div>
-
+            <div th:if="${isCommonLeftExists}">
+                <p>"common": {</p>
+                <div th:each="parameter : ${res.getDiffBetweenParametersCommonForUI().getParamsLeft()}">
+                    <p th:class="${parameter.value}" th:text="${parameter.key}"></p>
+                </div>
+                <p>}</p>
             </div>
 
             <!--services-->
-            <div>
+            <div th:if="${isServicesLeftExists}">
+                <p>"services": {</p>
+                <div th:class="orange" th:each="service : ${res.getDiffBetweenParametersServices().getEntriesDifferingOnLeft()}">
+                    <p>"<span th:text="${service.key}"></span>": {</p>
+                    <div th:each="parameter : ${service.value}">
+                        <p>"<span th:text="${parameter.key}"></span>": "<span th:text="${parameter.value}"></span>" </p>
+                    </div>
+                    <p>}</p>
+                </div>
+                <div th:each="service : ${res.getDiffBetweenParametersServices().getEntriesInCommon()}">
+                    <p>"<span th:text="${service.key}"></span>": {</p>
+                    <div th:each="parameter : ${service.value}">
+                        <p>"<span th:text="${parameter.key}"></span>": "<span th:text="${parameter.value}"></span>" </p>
+                    </div>
+                    <p>}</p>
+                </div>
+                <div th:class="red" th:each="service : ${res.getDiffBetweenParametersServices().getEntriesOnlyOnLeft()}">
+                    <p>"<span th:text="${service.key}"></span>": {</p>
+                    <div th:each="parameter : ${service.value}">
+                        <p>"<span th:text="${parameter.key}"></span>": "<span th:text="${parameter.value}"></span>" </p>
+                    </div>
+                    <p>}</p>
+                </div>
 
+                <p>}</p>
             </div>
 
             <p>}</p>
         </div>
-
-
-
-        <p>}</p>
     </div>
 </body>
 </html>

@@ -226,7 +226,7 @@
         "common": {
             "some-param": "test",
             "some-other-param": "test2",
-            "some-else-param": "test3"
+            "some-else-param1": "test3"
         },
         "services": {
             "service_name_1": {																		

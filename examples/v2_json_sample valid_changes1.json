@@ -209,12 +209,12 @@
     },
     "parameters": {
         "common": {
-            "some-param": "test",
             "some-other-param": "test2",
-            "some-else-param": "test3"
+            "some-else-param": "test3",
+            "some-param": "YELLOW"
         },
         "services": {
-            "service_name_1": {																		
+            "service_name_11": {
                 "some-third-param": "test4",															
 				"some-third-param-3": "test8",
 				"some-third-param-10": "test10"

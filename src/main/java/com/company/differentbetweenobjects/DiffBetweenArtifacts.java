@@ -1,4 +1,4 @@
-package com.company.differentbetweenobjects.diffbetweenarrays;
+package com.company.differentbetweenobjects;
 
 import com.company.model.artifacts.Artifact;
 import com.company.model.services.Service;

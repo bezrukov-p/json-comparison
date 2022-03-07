@@ -1,6 +1,10 @@
 package com.company.forui;
 
-import com.company.differentbetweenobjects.DifferenceBetweenObjects;
+import com.company.differentbetweenobjects.DiffBetweenParametersServices;
+import com.company.differentbetweenobjects.DiffBetweenScripts;
+import com.company.differentbetweenobjects.DiffBetweenServices;
+import com.company.forui.diffbetweenobjectsforui.DiffBetweenParametersCommonForUI;
+import com.company.forui.diffbetweenobjectsforui.DiffBetweenRpmForUI;
 import com.company.jsonparser.JsonParser;
 import com.company.model.JsonMappedObject;
 import com.networknt.schema.ValidationMessage;
@@ -16,18 +20,15 @@ public class ForUI {
     @Autowired
     private JsonParser jsonParser;
 
-    @Autowired
-    private DifferenceBetweenObjects diffBtwObjects;
-
     public void jsonNotValid(File jsonFile1, File jsonFile2, Model model) {
         boolean isJSON1Valid = jsonParser.isJSONValid(jsonFile1);
         boolean isJSON2Valid = jsonParser.isJSONValid(jsonFile2);
 
         if (!isJSON1Valid) {
-            model.addAttribute("json1", jsonFile1.getName().concat(" не является json файлом"));
+            model.addAttribute("file1NotJson", jsonFile1.getName().concat(" не является json файлом"));
         }
         if (!isJSON2Valid) {
-            model.addAttribute("json2", jsonFile2.getName().concat(" не является json файлом"));
+            model.addAttribute("file2NotJson", jsonFile2.getName().concat(" не является json файлом"));
         }
     }
 
@@ -54,10 +55,28 @@ public class ForUI {
 
         //для services
         comparisonResultForUI.setDiffBetweenServices
-                (diffBtwObjects.differenceBetweenListsOfServices(jsonObj1.getServices(), jsonObj2.getServices()));
-        comparisonResultForUI.setDiffBetweenScripts(
-                diffBtwObjects.differenceBetweenListsOfScripts(jsonObj1.getScripts(), jsonObj2.getScripts()));
+                (new DiffBetweenServices(jsonObj1.getServices(), jsonObj2.getServices()));
 
+        //для scripts
+        comparisonResultForUI.setDiffBetweenScripts
+                (new DiffBetweenScripts(jsonObj1.getScripts(), jsonObj2.getScripts()));
+
+        //для rpm
+        model.addAttribute("isRpmLeftExists", (jsonObj1.getRpm() != null));
+        model.addAttribute("isRpmRightExists", (jsonObj2.getRpm() != null));
+        comparisonResultForUI.setDiffBetweenRpmForUI(new DiffBetweenRpmForUI(jsonObj1.getRpm(), jsonObj2.getRpm()));
+
+        //для parameters/common
+        model.addAttribute("isCommonLeftExists", (jsonObj1.getParameters().getCommon() != null));
+        model.addAttribute("isCommonRightExists", (jsonObj2.getParameters().getCommon() != null));
+        comparisonResultForUI.setDiffBetweenParametersCommonForUI(
+                new DiffBetweenParametersCommonForUI(jsonObj1.getParameters().getCommon(), jsonObj2.getParameters().getCommon()));
+
+        //для parameters/services
+        model.addAttribute("isServicesLeftExists", (jsonObj1.getParameters().getServices() != null));
+        model.addAttribute("isServicesRightExists", (jsonObj2.getParameters().getServices() != null));
+        comparisonResultForUI.setDiffBetweenParametersServices(
+                new DiffBetweenParametersServices(jsonObj1.getParameters().getServices(), jsonObj2.getParameters().getServices()));
     }
 
     private void forVersion(JsonMappedObject jsonObj1, JsonMappedObject jsonObj2, Model model) {
@@ -80,9 +99,5 @@ public class ForUI {
         model.addAttribute("name1", '"' + name1 + '"');
         model.addAttribute("name2", '"' + name2 + '"');
         model.addAttribute("isNameEquals", isNameEquals);
-    }
-
-    private void forServices(Model model) {
-
     }
 }
