@@ -6,6 +6,8 @@ import com.company.differentbetweenobjects.DiffBetweenScripts;
 import com.company.differentbetweenobjects.DiffBetweenServices;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenParametersCommonForUI;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenRpmForUI;
+import com.company.forui.diffbetweenobjectsforui.DiffBetweenServicesForUI;
+import com.company.forui.diffbetweenobjectsforui.uiforservices.ServiceFieldsWithColorsForUI;
 import com.company.jsonparser.JsonParser;
 import com.company.model.JsonMappedObject;
 import com.networknt.schema.ValidationMessage;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import java.io.File;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -55,8 +58,10 @@ public class ForUI {
         forName(jsonObj1, jsonObj2, model);
 
         //для services
-        comparisonResultForUI.setDiffBetweenServices
-                (new DiffBetweenServices(jsonObj1.getServices(), jsonObj2.getServices()));
+        DiffBetweenServices diffBetweenServices = new DiffBetweenServices(jsonObj1.getServices(), jsonObj2.getServices());
+        DiffBetweenServicesForUI diffBetweenServicesForUI = new DiffBetweenServicesForUI(diffBetweenServices);
+        comparisonResultForUI.setDiffBetweenServicesForUI(diffBetweenServicesForUI);
+
 
         //для artifacts
         comparisonResultForUI.setDiffBetweenArtifacts(

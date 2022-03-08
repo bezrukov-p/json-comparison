@@ -3,9 +3,9 @@ package com.company.forui;
 import com.company.differentbetweenobjects.DiffBetweenArtifacts;
 import com.company.differentbetweenobjects.DiffBetweenParametersServices;
 import com.company.differentbetweenobjects.DiffBetweenScripts;
-import com.company.differentbetweenobjects.DiffBetweenServices;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenParametersCommonForUI;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenRpmForUI;
+import com.company.forui.diffbetweenobjectsforui.DiffBetweenServicesForUI;
 import com.company.model.rpm.Rpm;
 import lombok.Data;
 
@@ -20,7 +20,7 @@ public class ComparisonResultForUI {
     private Map<String, String> rpm;
     private Map<String, String> rpmHashes;
 
-    private DiffBetweenServices diffBetweenServices;
+    private DiffBetweenServicesForUI diffBetweenServicesForUI;
     private DiffBetweenArtifacts diffBetweenArtifacts;
     private DiffBetweenScripts diffBetweenScripts;
     private DiffBetweenRpmForUI diffBetweenRpmForUI;

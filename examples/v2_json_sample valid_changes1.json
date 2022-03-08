@@ -33,7 +33,6 @@
             "docker_tag": "1.33.02",
             "force": false,
             "github_repository": "https://github.com/mirror/busyboxs1",
-            "github_branch": "master223",
             "github_hash": "qwerty123456789qwerty123456789qwerty111q1321",
             "hashes": {
                 "sha1": "749d65718qwec394eae890e7137898419b48b021",
