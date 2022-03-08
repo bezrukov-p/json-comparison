@@ -4,10 +4,7 @@ import com.company.differentbetweenobjects.DiffBetweenArtifacts;
 import com.company.differentbetweenobjects.DiffBetweenParametersServices;
 import com.company.differentbetweenobjects.DiffBetweenScripts;
 import com.company.differentbetweenobjects.DiffBetweenServices;
-import com.company.forui.diffbetweenobjectsforui.DiffBetweenParametersCommonForUI;
-import com.company.forui.diffbetweenobjectsforui.DiffBetweenRpmForUI;
-import com.company.forui.diffbetweenobjectsforui.DiffBetweenScriptsForUI;
-import com.company.forui.diffbetweenobjectsforui.DiffBetweenServicesForUI;
+import com.company.forui.diffbetweenobjectsforui.*;
 import com.company.forui.diffbetweenobjectsforui.uiforservices.ServiceFieldsWithColorsForUI;
 import com.company.jsonparser.JsonParser;
 import com.company.model.JsonMappedObject;
@@ -74,21 +71,36 @@ public class ForUI {
         comparisonResultForUI.setDiffBetweenScriptsForUI(diffBetweenScriptsForUI);
 
         //для rpm
+        model.addAttribute("isRpmOnlyOnLeft", (jsonObj1.getRpm() != null && jsonObj2.getRpm() == null));
+        model.addAttribute("isRpmOnlyOnRight", (jsonObj1.getRpm() == null && jsonObj2.getRpm() != null));
         model.addAttribute("isRpmLeftExists", (jsonObj1.getRpm() != null));
         model.addAttribute("isRpmRightExists", (jsonObj2.getRpm() != null));
         comparisonResultForUI.setDiffBetweenRpmForUI(new DiffBetweenRpmForUI(jsonObj1.getRpm(), jsonObj2.getRpm()));
 
         //для parameters/common
+        model.addAttribute("isCommonOnlyOnLeft", (
+                jsonObj1.getParameters().getCommon() != null && jsonObj2.getParameters().getCommon() == null));
+        model.addAttribute("isCommonOnlyOnRight", (
+                jsonObj1.getParameters().getCommon() == null && jsonObj2.getParameters().getCommon() != null));
         model.addAttribute("isCommonLeftExists", (jsonObj1.getParameters().getCommon() != null));
         model.addAttribute("isCommonRightExists", (jsonObj2.getParameters().getCommon() != null));
         comparisonResultForUI.setDiffBetweenParametersCommonForUI(
                 new DiffBetweenParametersCommonForUI(jsonObj1.getParameters().getCommon(), jsonObj2.getParameters().getCommon()));
 
         //для parameters/services
+        model.addAttribute("isServicesOnlyOnLeft", (
+                jsonObj1.getParameters().getServices() != null && jsonObj2.getParameters().getServices() == null));
+        model.addAttribute("isServicesOnlyOnRight", (
+                jsonObj1.getParameters().getServices() == null && jsonObj2.getParameters().getServices() != null));
         model.addAttribute("isServicesLeftExists", (jsonObj1.getParameters().getServices() != null));
         model.addAttribute("isServicesRightExists", (jsonObj2.getParameters().getServices() != null));
-        comparisonResultForUI.setDiffBetweenParametersServices(
-                new DiffBetweenParametersServices(jsonObj1.getParameters().getServices(), jsonObj2.getParameters().getServices()));
+        DiffBetweenParametersServices diffBetweenParametersServices =
+                new DiffBetweenParametersServices(jsonObj1.getParameters().getServices(), jsonObj2.getParameters().getServices());
+        DiffBetweenParametersServicesForUI diffBetweenParametersServicesForUI =
+                new DiffBetweenParametersServicesForUI(diffBetweenParametersServices);
+        comparisonResultForUI.setDiffBetweenParametersServicesForUI(diffBetweenParametersServicesForUI);
+
+
     }
 
     private void forVersion(JsonMappedObject jsonObj1, JsonMappedObject jsonObj2, Model model) {

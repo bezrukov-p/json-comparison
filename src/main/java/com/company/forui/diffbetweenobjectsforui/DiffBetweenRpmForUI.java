@@ -2,6 +2,7 @@ package com.company.forui.diffbetweenobjectsforui;
 
 
 import com.company.model.rpm.Rpm;
+import com.company.model.services.Hashes;
 import lombok.Data;
 
 import java.util.LinkedHashMap;
@@ -22,6 +23,15 @@ public class DiffBetweenRpmForUI {
     }
 
     public DiffBetweenRpmForUI(Rpm rpm1, Rpm rpm2) {
+        if (rpm1 == null) {
+            rpm1 = new Rpm();
+            rpm1.setHashes(new Hashes());
+        }
+        if (rpm2 == null) {
+            rpm2 = new Rpm();
+            rpm2.setHashes(new Hashes());
+        }
+
         String urlColor1 = getResultOfComparingFieldForUI(rpm1.getUrl(), rpm2.getUrl(), true);
         String urlColor2 = getResultOfComparingFieldForUI(rpm1.getUrl(), rpm2.getUrl(), false);
         if (urlColor1 != null)

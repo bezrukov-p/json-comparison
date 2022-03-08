@@ -17,6 +17,11 @@ public class DiffBetweenParametersCommonForUI {
     }
 
     public DiffBetweenParametersCommonForUI(Map<String, String> left, Map<String, String> right) {
+        if (left == null)
+            left = new LinkedHashMap<>();
+        if (right == null)
+            right = new LinkedHashMap<>();
+
         Map<String, String> l = new LinkedHashMap<>(left);
         Map<String, String> r = new LinkedHashMap<>(right);
 
@@ -24,8 +29,8 @@ public class DiffBetweenParametersCommonForUI {
         while(itr.hasNext()) {
             String key = itr.next();
             if (r.containsKey(key) && !l.get(key).equals(r.get(key))) {
-                paramsLeft.put("\"key\": \"" + l.get(key) + "\"", "orange");
-                paramsRight.put("\"key\": \"" + r.get(key) + "\"", "orange");
+                paramsLeft.put("\"" + key + "\": \"" + l.get(key) + "\"", "orange");
+                paramsRight.put("\"" + key + "\": \"" + r.get(key) + "\"", "orange");
                 itr.remove();
                 r.remove(key);
             }
@@ -35,8 +40,8 @@ public class DiffBetweenParametersCommonForUI {
         while(itr.hasNext()) {
             String key = itr.next();
             if (r.containsKey(key) && l.get(key).equals(r.get(key))) {
-                paramsLeft.put("\"key\": \"" + l.get(key) + "\"", "white");
-                paramsRight.put("\"key\": \"" + r.get(key) + "\"", "white");
+                paramsLeft.put("\"" + key + "\": \"" + l.get(key) + "\"", "white");
+                paramsRight.put("\"" + key + "\": \"" + r.get(key) + "\"", "white");
                 itr.remove();
                 r.remove(key);
             }
@@ -45,13 +50,13 @@ public class DiffBetweenParametersCommonForUI {
         itr = l.keySet().iterator();
         while(itr.hasNext()) {
             String key = itr.next();
-            paramsLeft.put("\"key\": \"" + l.get(key) + "\"", "red");
+            paramsLeft.put("\"" + key + "\": \"" + l.get(key) + "\"", "red");
         }
 
         itr = r.keySet().iterator();
         while(itr.hasNext()) {
             String key = itr.next();
-            paramsRight.put("\"key\": \"" + r.get(key) + "\"", "green");
+            paramsRight.put("\"" + key + "\": \"" + r.get(key) + "\"", "green");
         }
     }
 }

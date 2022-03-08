@@ -233,9 +233,12 @@
                 "some-third-param": "test4",															
 				"some-third-param-3": "test8"															
             },
-			"service_name_2": {		
-                "some-third-param-5": "test5",
-                "some-third-param-2": "test2"															
+			"service_name_2": {
+                "some-third-param-white2": "test222",
+                "some-third-param-yellow": "test5",
+                "some-third-param-red": "test2",
+                "some-third-param-white": "test2"
+
             },
 			"service_name": {																		
                 "some-third-param-3": "test4"															

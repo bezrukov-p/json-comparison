@@ -24,6 +24,11 @@ public class DiffBetweenParametersServices {
 
     public DiffBetweenParametersServices(Map<String, Map<String, String>> services1,
                                          Map<String, Map<String, String>> services2) {
+        if (services1 == null)
+            services1 = new LinkedHashMap<>();
+        if (services2 == null)
+            services2 = new LinkedHashMap<>();
+
         Map<String, Map<String, String>> s1 = new LinkedHashMap<>(services1);
         Map<String, Map<String, String>> s2 = new LinkedHashMap<>(services2);
 

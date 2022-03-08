@@ -145,7 +145,7 @@
         </div>
 
         <!--rpm-->
-        <div th:class="indent-left" th:if="${isRpmLeftExists}">
+        <div th:class="indent-left" th:if="${isRpmLeftExists}" th:classappend="${isRpmOnlyOnLeft} ? red : '' ">
             <p>"rpm": {</p>
             <div th:class="indent-left" th:each="rpm : ${res.getDiffBetweenRpmForUI().getRpmLeft()}">
                 <p th:text="${rpm.key}" th:classappend="${rpm.value}"></p>
@@ -164,7 +164,7 @@
         <div th:class="indent-left">
             <p>"parameters: {</p>
             <!--common-->
-            <div th:class="indent-left" th:if="${isCommonLeftExists}">
+            <div th:class="indent-left" th:if="${isCommonLeftExists}" th:classappend="${isCommonOnlyOnLeft} ? red : '' ">
                 <p>"common": {</p>
                 <div th:class="indent-left" th:each="parameter : ${res.getDiffBetweenParametersCommonForUI().getParamsLeft()}">
                     <p th:classappend="${parameter.value}" th:text="${parameter.key}"></p>
@@ -173,23 +173,25 @@
             </div>
 
             <!--services-->
-            <div th:class="indent-left" th:if="${isServicesLeftExists}">
+            <div th:class="indent-left" th:if="${isServicesLeftExists}" th:classappend="${isServicesOnlyOnLeft} ? red : '' ">
                 <p>"services": {</p>
-                <div th:class="indent-left" th:classappend="orange" th:each="service : ${res.getDiffBetweenParametersServices().getEntriesDifferingOnLeft()}">
+                <div th:class="indent-left" th:classappend="orange" th:each="service : ${res.getDiffBetweenParametersServicesForUI().getEntriesDifferingOnLeft()}">
+                    <p>"<span th:text="${service.key}"></span>": {</p>
+                    <div th:class="indent-left" th:each="parameter : ${service.value.getFields()}">
+                        <p th:class="${parameter.value}" th:text="${parameter.key}"></p>
+                    </div>
+                    <p>}</p>
+                </div>
+
+
+                <div th:class="indent-left" th:each="service : ${res.getDiffBetweenParametersServicesForUI().getEntriesInCommon()}">
                     <p>"<span th:text="${service.key}"></span>": {</p>
                     <div th:class="indent-left" th:each="parameter : ${service.value}">
                         <p>"<span th:text="${parameter.key}"></span>": "<span th:text="${parameter.value}"></span>" </p>
                     </div>
                     <p>}</p>
                 </div>
-                <div th:class="indent-left" th:each="service : ${res.getDiffBetweenParametersServices().getEntriesInCommon()}">
-                    <p>"<span th:text="${service.key}"></span>": {</p>
-                    <div th:class="indent-left" th:each="parameter : ${service.value}">
-                        <p>"<span th:text="${parameter.key}"></span>": "<span th:text="${parameter.value}"></span>" </p>
-                    </div>
-                    <p>}</p>
-                </div>
-                <div th:class="indent-left" th:classappend="red" th:each="service : ${res.getDiffBetweenParametersServices().getEntriesOnlyOnLeft()}">
+                <div th:class="indent-left" th:classappend="red" th:each="service : ${res.getDiffBetweenParametersServicesForUI().getEntriesOnlyOnLeft()}">
                     <p>"<span th:text="${service.key}"></span>": {</p>
                     <div th:class="indent-left" th:each="parameter : ${service.value}">
                         <p>"<span th:text="${parameter.key}"></span>": "<span th:text="${parameter.value}"></span>" </p>

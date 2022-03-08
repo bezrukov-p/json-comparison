@@ -212,14 +212,17 @@
             "some-param": "YELLOW2"
         },
         "services": {
+            "service_name_2": {
+                "some-third-param-white": "test2",
+                "some-third-param-2": "test2_",
+                "some-third-param-11": "test11",
+                "some-third-param-white2": "test222",
+                "some-third-param-yellow": "test5ss"
+            },
             "service_name_11": {
                 "some-third-param": "test4",															
 				"some-third-param-3": "test8",
 				"some-third-param-10": "test10"
-            },
-			"service_name_2": {
-                "some-third-param-2": "test2_",
-                "some-third-param-11": "test11"
             },
 			"service_name": {																		
                 "some-third-param-3": "test4"															
