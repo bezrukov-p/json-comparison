@@ -2,7 +2,7 @@
     background-color: #f19898;
 }
 .orange {
-    background-color: #f1d1ad;
+    background-color: #eeca95;
 }
 .green {
     background-color: #81ff81;
@@ -12,4 +12,19 @@
 }
 .dark-orange {
     background-color: #dcb163;
+}
+.left-div-style {
+    width: 49.5%;
+    position: absolute;
+    top: 30px;
+    height: 95%;
+    overflow-y: scroll;
+}
+.right-div-style {
+    width: 49.5%;
+    position: absolute;
+    left: 50.5%;
+    top: 30px;
+    height: 95%;
+    overflow-y: scroll;
 }
