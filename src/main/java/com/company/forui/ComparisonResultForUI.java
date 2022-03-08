@@ -2,14 +2,12 @@ package com.company.forui;
 
 import com.company.differentbetweenobjects.DiffBetweenArtifacts;
 import com.company.differentbetweenobjects.DiffBetweenParametersServices;
-import com.company.differentbetweenobjects.DiffBetweenScripts;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenParametersCommonForUI;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenRpmForUI;
+import com.company.forui.diffbetweenobjectsforui.DiffBetweenScriptsForUI;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenServicesForUI;
-import com.company.model.rpm.Rpm;
 import lombok.Data;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Data
@@ -22,7 +20,7 @@ public class ComparisonResultForUI {
 
     private DiffBetweenServicesForUI diffBetweenServicesForUI;
     private DiffBetweenArtifacts diffBetweenArtifacts;
-    private DiffBetweenScripts diffBetweenScripts;
+    private DiffBetweenScriptsForUI diffBetweenScriptsForUI;
     private DiffBetweenRpmForUI diffBetweenRpmForUI;
     private DiffBetweenParametersCommonForUI diffBetweenParametersCommonForUI;
     private DiffBetweenParametersServices diffBetweenParametersServices;

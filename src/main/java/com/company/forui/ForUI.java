@@ -6,6 +6,7 @@ import com.company.differentbetweenobjects.DiffBetweenScripts;
 import com.company.differentbetweenobjects.DiffBetweenServices;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenParametersCommonForUI;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenRpmForUI;
+import com.company.forui.diffbetweenobjectsforui.DiffBetweenScriptsForUI;
 import com.company.forui.diffbetweenobjectsforui.DiffBetweenServicesForUI;
 import com.company.forui.diffbetweenobjectsforui.uiforservices.ServiceFieldsWithColorsForUI;
 import com.company.jsonparser.JsonParser;
@@ -68,8 +69,9 @@ public class ForUI {
                 new DiffBetweenArtifacts(jsonObj1.getArtifacts(), jsonObj2.getArtifacts()));
 
         //для scripts
-        comparisonResultForUI.setDiffBetweenScripts
-                (new DiffBetweenScripts(jsonObj1.getScripts(), jsonObj2.getScripts()));
+        DiffBetweenScripts diffBetweenScripts = new DiffBetweenScripts(jsonObj1.getScripts(), jsonObj2.getScripts());
+        DiffBetweenScriptsForUI diffBetweenScriptsForUI = new DiffBetweenScriptsForUI(diffBetweenScripts);
+        comparisonResultForUI.setDiffBetweenScriptsForUI(diffBetweenScriptsForUI);
 
         //для rpm
         model.addAttribute("isRpmLeftExists", (jsonObj1.getRpm() != null));

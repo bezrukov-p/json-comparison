@@ -1,15 +1,15 @@
 .red {
-    background-color: red;
+    background-color: #f5d6d6;
 }
 .orange {
-    background-color: orange;
+    background-color: #fae3ca;
 }
 .green {
-    background-color: green;
+    background-color: #d1ffd1;
 }
 .indent-left {
     margin-left: 15px;
 }
 .dark-orange {
-    background-color: #531818;
+    background-color: #142750;
 }

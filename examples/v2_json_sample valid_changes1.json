@@ -187,7 +187,6 @@
         },
 		{
             "service-short-name": "mongocli",
-            "start-point": "start-point.sh",
             "end-point": "end-point.sh",
             "script_name": "YELLOW",
             "hashes": {
