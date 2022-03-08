@@ -156,6 +156,7 @@
             ],
             "target_repository": "file"
         }, {
+            "service-short-name": "TEST_2",
             "service_name": "ORANGE",
             "hashes": {
                 "sha1": "fun7f57f7ff89adcff04c223a01cd06ab0932c21",
@@ -167,7 +168,7 @@
             "target_repository": "file"
         }, {
             "service-short-name": "TEST_2",
-            "service_name": "node-v0.6.11.tar.gz",
+            "service_name": "RED",
             "hashes": {
                 "sha1": "5t8a614b22f1806f53ed68b1e68a2d3849130c15",
                 "sha256": "e5nbyucce66bf62e142cf3430c137ac5f0c82b81f3f6099457a523afe3375916"
@@ -175,7 +176,7 @@
             "file": [
                 "https://nodejs.org/dist/node-v0.6.13.tar.gz"
             ],
-            "target_repository": "file"
+            "target_repository": "fileRED"
         }
     ],
     "script": [

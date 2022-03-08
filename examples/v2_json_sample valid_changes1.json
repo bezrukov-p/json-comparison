@@ -70,7 +70,7 @@
         {
             "mvn": [
                 {
-                    "groupId": "log4jREEEED",
+                    "groupId": "log4j",
                     "artifactId": "log4j",
                     "version": "1.2.17",
                     "service_name": "test-service-1",
@@ -151,7 +151,7 @@
             "target_repository": "file"
         }, {
             "service-short-name": "TEST_2",
-            "service_name": "node-v0.6.11.tar.gz",
+            "service_name": "GREEN",
             "hashes": {
                 "sha1": "5t8a614b22f1806f53ed68b1e68a2d3849130c15",
                 "sha256": "e5nbyucce66bf62e142cf3430c137ac5f0c82b81f3f6099457a523afe3375916"

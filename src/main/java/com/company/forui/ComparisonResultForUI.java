@@ -16,7 +16,7 @@ public class ComparisonResultForUI {
     private Map<String, String> rpmHashes;
 
     private DiffBetweenServicesForUI diffBetweenServicesForUI;
-    private DiffBetweenArtifacts diffBetweenArtifacts;
+    private DiffBetweenArtifactsForUI diffBetweenArtifactsForUI;
     private DiffBetweenScriptsForUI diffBetweenScriptsForUI;
     private DiffBetweenRpmForUI diffBetweenRpmForUI;
     private DiffBetweenParametersCommonForUI diffBetweenParametersCommonForUI;

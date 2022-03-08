@@ -82,17 +82,121 @@
 
         <!--artifacts-->
         <div th:class="indent-left">
-            <p>"artifacts": {</p>
-            <div th:class="indent-left" th:classappend="orange" th:each="artifact : ${res.getDiffBetweenArtifacts().getEntriesDifferingOnLeft()}">
-                <p th:text="${artifact.fieldsToJsonString()}"></p>
+            <p>"artifacts": [</p>
+            <div th:class="indent-left" th:classappend="orange" th:each="artifact : ${res.getDiffBetweenArtifactsForUI().getEntriesDifferingOnLeftType2()}">
+                <p>{</p>
+                <div th:class="indent-left">
+                    <div th:each="field : ${artifact.getFields()}">
+                        <p th:text="${field.key}" th:classappend="${field.value}"></p>
+                    </div>
+                    <p>"hashes": {</p>
+                    <div th:class="indent-left" th:each="field : ${artifact.getHashesFields()}">
+                        <p th:text="${field.key}" th:classappend="${field.value}"></p>
+                    </div>
+                    <p>}</p>
+                    <p>"file": [</p>
+                    <div th:class="indent-left" th:each="file : ${artifact.getFile()}">
+                        <p th:text="${file.key}" th:classappend="${file.value}"></p>
+                    </div>
+                    <p>]</p>
+                </div>
+                <p>}</p>
             </div>
-            <div th:class="indent-left" th:each="artifact : ${res.getDiffBetweenArtifacts().getEntriesInCommon()}">
-                <p th:text="${artifact.fieldsToJsonString()}"></p>
+
+            <div th:class="indent-left" th:each="artifact : ${res.getDiffBetweenArtifactsForUI().getEntriesInCommonType2()}">
+                <p>{</p>
+                <div th:class="indent-left">
+                    <div th:each="field : ${artifact.getFields()}">
+                        <p th:text="${field}"></p>
+                    </div>
+                    <p>"hashes": {</p>
+                    <div th:class="indent-left" th:each="field : ${artifact.getHashesFields()}">
+                        <p th:text="${field}"></p>
+                    </div>
+                    <p>}</p>
+                    <p>"file": [</p>
+                    <div th:class="indent-left">
+                        <p th:text="${artifact.getFile()}" ></p>
+                    </div>
+                    <p>]</p>
+                </div>
+                <p>}</p>
             </div>
-            <div th:class="indent-left" th:classappend="red" th:each="artifact : ${res.getDiffBetweenArtifacts().getEntriesOnlyOnLeft()}">
-                <p th:text="${artifact.fieldsToJsonString()}"></p>
+
+            <div th:class="indent-left" th:each="artifact : ${res.getDiffBetweenArtifactsForUI().getEntriesInCommonType1()}">
+                <p>{</p>
+                <div th:class="indent-left">
+                    <p>"mvn": [</p>
+                    <div th:class="indent-left">
+                        <div th:each="mvn : ${artifact.getMvn()}">
+                            <p>{</p>
+                            <div th:class="indent-left">
+                                <div th:each="field : ${mvn.getFields()}">
+                                    <p th:text="${field}"></p>
+                                </div>
+                                <p>"hashes": {</p>
+                                <div th:class="indent-left" th:each="field : ${mvn.getHashesFields()}">
+                                    <p th:text="${field}"></p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <p>}</p>
+                        </div>
+                    </div>
+                    <p>]</p>
+                    <p th:text="${artifact.getTargetRepository()}"></p>
+                </div>
+                <p>}</p>
             </div>
-            <p>}</p>
+
+            <div th:class="indent-left" th:classappend="red" th:each="artifact : ${res.getDiffBetweenArtifactsForUI().getEntriesOnlyOnLeftType2()}">
+                <p>{</p>
+                <div th:class="indent-left">
+                    <div th:each="field : ${artifact.getFields()}">
+                        <p th:text="${field}"></p>
+                    </div>
+                    <p>"hashes": {</p>
+                    <div th:class="indent-left" th:each="field : ${artifact.getHashesFields()}">
+                        <p th:text="${field}"></p>
+                    </div>
+                    <p>}</p>
+                    <p>"file": [</p>
+                    <div th:class="indent-left">
+                        <p th:text="${artifact.getFile()}" ></p>
+                    </div>
+                    <p>]</p>
+                </div>
+                <p>}</p>
+            </div>
+
+            <div th:class="indent-left" th:classappend="red" th:each="artifact : ${res.getDiffBetweenArtifactsForUI().getEntriesOnlyOnLeftType1()}">
+                <p>{</p>
+                <div th:class="indent-left">
+                    <p>"mvn": [</p>
+                    <div th:class="indent-left">
+                        <div th:each="mvn : ${artifact.getMvn()}">
+                            <p>{</p>
+                            <div th:class="indent-left">
+                                <div th:each="field : ${mvn.getFields()}">
+                                    <p th:text="${field}"></p>
+                                </div>
+                                <p>"hashes": {</p>
+                                <div th:class="indent-left" th:each="field : ${mvn.getHashesFields()}">
+                                    <p th:text="${field}"></p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <p>}</p>
+                        </div>
+                    </div>
+                    <p>]</p>
+                    <p th:text="${artifact.getTargetRepository()}"></p>
+                </div>
+                <p>}</p>
+            </div>
+
+
+            <p>]</p>
         </div>
 
         <!--script-->

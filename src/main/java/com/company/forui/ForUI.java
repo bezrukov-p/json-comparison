@@ -62,8 +62,9 @@ public class ForUI {
 
 
         //для artifacts
-        comparisonResultForUI.setDiffBetweenArtifacts(
-                new DiffBetweenArtifacts(jsonObj1.getArtifacts(), jsonObj2.getArtifacts()));
+        DiffBetweenArtifacts diffBetweenArtifacts = new DiffBetweenArtifacts(jsonObj1.getArtifacts(), jsonObj2.getArtifacts());
+        DiffBetweenArtifactsForUI diffBetweenArtifactsForUI = new DiffBetweenArtifactsForUI(diffBetweenArtifacts);
+        comparisonResultForUI.setDiffBetweenArtifactsForUI(diffBetweenArtifactsForUI);
 
         //для scripts
         DiffBetweenScripts diffBetweenScripts = new DiffBetweenScripts(jsonObj1.getScripts(), jsonObj2.getScripts());
