@@ -209,7 +209,7 @@
         "common": {
             "some-other-param": "test2",
             "some-else-param": "test3",
-            "some-param": "YELLOW"
+            "some-param": "YELLOW2"
         },
         "services": {
             "service_name_11": {

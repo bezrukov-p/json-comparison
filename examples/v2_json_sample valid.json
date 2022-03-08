@@ -224,9 +224,9 @@
     },
     "parameters": {
         "common": {
-            "some-param": "test",
             "some-other-param": "test2",
-            "some-else-param1": "test3"
+            "some-else-param1": "test3",
+            "some-param": "YELLOW"
         },
         "services": {
             "service_name_1": {																		
