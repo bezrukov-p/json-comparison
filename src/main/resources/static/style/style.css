@@ -28,3 +28,13 @@
     height: 95%;
     overflow-y: scroll;
 }
+
+.left-div-style2 {
+    width: 50%;
+    position: absolute;
+}
+.right-div-style2 {
+    width: 50%;
+    position: absolute;
+    left: 50%;
+}

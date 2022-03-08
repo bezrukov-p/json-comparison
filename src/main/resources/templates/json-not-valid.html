@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <title>Json не валидны</title>
+    <link rel="stylesheet" type="text/css" href="/static/style/style.css" th:href="@{/style/style.css}"/>
 </head>
+
 <body>
 
-<th:block th:unless="${m1.isEmpty()}">
-    <p th:text="${file1}"> не валидный</p>
+<div th:class="left-div-style2">
+    <p th:if="${!m1.isEmpty()}"><span th:text="${file1}"></span> не валидный </p>
+    <p th:if="${m1.isEmpty()}"><span th:text="${file1}"></span> валидный </p>
+    <hr>
     <th:block th:each="vm : ${m1}">
         <p th:text="${vm.getMessage()}"></p>
     </th:block>
-</th:block>
+</div>
 
-<th:block th:unless="${m2.isEmpty()}">
-    <p th:text="${file2}"> не валидный</p>
+<div th:class="right-div-style2">
+    <p th:if="${!m2.isEmpty()}"><span th:text="${file2}"></span> не валидный </p>
+    <p th:if="${m2.isEmpty()}"><span th:text="${file2}"></span> валидный </p>
+    <hr>
     <th:block th:each="vm : ${m2}">
         <p th:text="${vm.getMessage()}"></p>
     </th:block>
-</th:block>
-
+</div>
 
 </body>
 </html>
