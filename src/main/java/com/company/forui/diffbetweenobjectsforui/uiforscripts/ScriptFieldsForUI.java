@@ -10,6 +10,7 @@ import java.util.List;
 
 @Data
 public class ScriptFieldsForUI {
+    //содержат готовые строки "ключ": "значение" для ui
     private List<String> fields;
     private List<String> hashesFields;
 

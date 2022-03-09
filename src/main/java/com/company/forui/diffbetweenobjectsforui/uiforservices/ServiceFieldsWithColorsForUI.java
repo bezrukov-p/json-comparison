@@ -8,6 +8,7 @@ import java.util.Map;
 
 @Data
 public class ServiceFieldsWithColorsForUI {
+    //строка - цвет
     Map<String, String> fields;
     Map<String, String> hashesFields;
 

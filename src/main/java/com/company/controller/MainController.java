@@ -40,14 +40,18 @@ public class MainController {
         model.addAttribute("file1", jsonFile1.getName());
         model.addAttribute("file2", jsonFile2.getName());
 
+        //являются ли файлы json
         boolean isJSON1Valid = jsonParser.isJSONValid(jsonFile1);
         boolean isJSON2Valid = jsonParser.isJSONValid(jsonFile2);
 
+
+        //если не валидны
         if (!isJSON1Valid || !isJSON2Valid) {
             forUI.jsonNotValid(jsonFile1, jsonFile2, model);
             return "main";
         }
 
+        //ошибки валидации
         Set<ValidationMessage> validationResult1 = jsonParser.getValidationMessages(jsonFile1);
         Set<ValidationMessage> validationResult2 = jsonParser.getValidationMessages(jsonFile2);
         if (!validationResult1.isEmpty() || !validationResult2.isEmpty()) {

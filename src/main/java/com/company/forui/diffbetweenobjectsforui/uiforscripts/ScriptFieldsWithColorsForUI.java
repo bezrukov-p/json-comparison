@@ -10,6 +10,7 @@ import java.util.Map;
 
 @Data
 public class ScriptFieldsWithColorsForUI {
+    //строка - цвет
     Map<String, String> fields;
     Map<String, String> hashesFields;
 

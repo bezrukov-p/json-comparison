@@ -16,7 +16,7 @@ import java.util.Set;
 @Component
 public class JsonParser {
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private ObjectMapper mapper = new ObjectMapper();
     private final String SCHEMA_PATH = "src/main/resources/model/json-schema.json";
 
     public boolean isJSONValid(File file) {

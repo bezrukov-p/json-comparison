@@ -22,13 +22,11 @@ public class DiffBetweenServices {
     }
 
     public DiffBetweenServices(List<Service> services1, List<Service> services2) {
-        this.differenceBetweenListsOfServices(services1, services2);
-    }
-
-    private void differenceBetweenListsOfServices(List<Service> services1, List<Service> services2) {
+        //копия сервисов
         Set<Service> servicesSet1 = new LinkedHashSet<>(services1);
         Set<Service> servicesSet2 = new LinkedHashSet<>(services2);
 
+        //добавляем и удаляем полностью равные элементы
         Iterator<Service> itr = servicesSet1.iterator();
         while(itr.hasNext()) {
             Service service = itr.next();
@@ -39,6 +37,7 @@ public class DiffBetweenServices {
             }
         }
 
+        //добавляем равные по мандаторным
         Iterator<Service> itr1 = servicesSet1.iterator();
         while(itr1.hasNext()) {
             Service service1 = itr1.next();
@@ -55,6 +54,7 @@ public class DiffBetweenServices {
             }
         }
 
+        //оставшиеся только в левом или в правом
         entriesOnlyOnLeft.addAll(servicesSet1);
         entriesOnlyOnRight.addAll(servicesSet2);
     }
