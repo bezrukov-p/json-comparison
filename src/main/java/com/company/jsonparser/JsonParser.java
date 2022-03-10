@@ -24,7 +24,6 @@ public class JsonParser {
             mapper.readTree(file);
             return true;
         } catch (IOException e) {
-            /*e.printStackTrace();*/
             return false;
         }
     }

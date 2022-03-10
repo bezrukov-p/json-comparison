@@ -2,9 +2,8 @@ package com.company.controller;
 
 
 import com.company.fileactions.FileActions;
-import com.company.forui.ForUI;
+import com.company.view.ForUI;
 import com.company.jsonparser.JsonParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.networknt.schema.ValidationMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +34,13 @@ public class MainController {
     public String uploadFile(@RequestParam("file1") MultipartFile file1,
                            @RequestParam("file2") MultipartFile file2,
                            Model model) throws IOException {
+        //10MB
+        if (file1.getSize() > 10485760L || file2.getSize() > 10485760L){
+            model.addAttribute("file1size", file1.getName().concat(" весит более 10MB"));
+            model.addAttribute("file2size", file2.getName().concat(" весит более 10MB"));
+            return "main";
+        }
+
         File jsonFile1 = FileActions.uploadFile(file1);
         File jsonFile2 = FileActions.uploadFile(file2);
         model.addAttribute("file1", jsonFile1.getName());

@@ -35,29 +35,4 @@ public class Service {
         else
             return false;
     }
-
-    public String fieldsToJsonString() {
-        StringBuilder result = new StringBuilder();
-        if (serviceShortName != null)
-            result.append("\"service-short-name\": \"").append(serviceShortName).append("\"").append("\n");
-        result.append("\"service_name\": \"").append(serviceName).append("\"").append("\n");
-        result.append("\"artifact_type\": \"").append(artifactType).append("\"").append("\n");
-        result.append("\"docker_registry\": \"").append(dockerRegistry).append("\"").append("\n");
-        result.append("\"docker_image_name\": \"").append(dockerImageName).append("\"").append("\n");
-        result.append("\"docker_tag\": \"").append(dockerTag).append("\"").append("\n");
-        if (force != null)
-            result.append("\"force\": \"").append(force).append("\n");
-        if (githubRepository != null)
-            result.append("\"github_repository\": \"").append(githubRepository).append("\"").append("\n");
-        if (githubBranch != null)
-            result.append("\"github_branch\": \"").append(githubBranch).append("\"").append("\n");
-        if (githubHash != null)
-            result.append("\"github_hash\": \"").append(githubHash).append("\"").append("\n");
-
-        result.append("\"hashes\": {\n" + "  \"sha1\": \"")
-                .append(hashes.getSha1()).append("\"\n").append("  \"sha256\": \"")
-                .append(hashes.getSha256()).append("\"");
-
-        return result.toString();
-    }
 }
