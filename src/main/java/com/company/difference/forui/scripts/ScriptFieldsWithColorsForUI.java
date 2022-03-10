@@ -11,8 +11,8 @@ import java.util.Map;
 @Data
 public class ScriptFieldsWithColorsForUI {
     //строка - цвет
-    Map<String, String> fields;
-    Map<String, String> hashesFields;
+    private Map<String, String> fields;
+    private Map<String, String> hashesFields;
 
     {
         fields = new LinkedHashMap<>();

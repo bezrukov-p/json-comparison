@@ -77,7 +77,7 @@ public class DiffBetweenArtifacts {
             Iterator<Artifact> itr2 = artifacts2Type2.iterator();
             while(itr2.hasNext()) {
                 Artifact artifact2 = itr2.next();
-                if (artifact1.ComparisonByMandateFields(artifact2)) {
+                if (artifact1.comparisonByMandateFields(artifact2)) {
                     entriesDifferingOnLeftType2.add(artifact1);
                     entriesDifferingOnRightType2.add(artifact2);
                     itr1.remove();

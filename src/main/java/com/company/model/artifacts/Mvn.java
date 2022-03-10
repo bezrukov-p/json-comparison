@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class Mvn {
-
     private String groupId;
     private String artifactId;
     private String version;
@@ -18,5 +17,4 @@ public class Mvn {
     @JsonSetter("mvn_repository")
     private String mvnRepository;
     private Hashes hashes;
-
 }

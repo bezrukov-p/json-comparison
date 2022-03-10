@@ -20,9 +20,9 @@ import java.util.Set;
 @Controller
 public class MainController {
     @Autowired
-    JsonParser jsonParser;
+    private JsonParser jsonParser;
     @Autowired
-    ForUI forUI;
+    private ForUI forUI;
 
     @GetMapping("/main")
     public String MainForm() {

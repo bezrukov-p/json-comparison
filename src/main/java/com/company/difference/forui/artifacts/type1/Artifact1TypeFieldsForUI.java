@@ -11,8 +11,8 @@ import java.util.Set;
 
 @Data
 public class Artifact1TypeFieldsForUI {
-    List<MvnFieldsForUI> mvn;
-    String targetRepository;
+    private List<MvnFieldsForUI> mvn;
+    private String targetRepository;
 
     {
         mvn = new ArrayList<>();

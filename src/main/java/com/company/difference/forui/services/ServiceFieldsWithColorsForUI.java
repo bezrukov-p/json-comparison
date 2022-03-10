@@ -8,9 +8,9 @@ import java.util.Map;
 
 @Data
 public class ServiceFieldsWithColorsForUI {
-    //строка - цвет
-    Map<String, String> fields;
-    Map<String, String> hashesFields;
+    //пары (готовая строка, её цвет)
+    private Map<String, String> fields;
+    private Map<String, String> hashesFields;
 
     {
         fields = new LinkedHashMap<>();

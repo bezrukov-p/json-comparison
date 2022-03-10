@@ -44,7 +44,7 @@ public class DiffBetweenServices {
             Iterator<Service> itr2 = servicesSet2.iterator();
             while(itr2.hasNext()) {
                 Service service2 = itr2.next();
-                if (service1.ComparisonByMandateFields(service2)) {
+                if (service1.comparisonByMandateFields(service2)) {
                     entriesDifferingOnLeft.add(service1);
                     entriesDifferingOnRight.add(service2);
                     itr1.remove();

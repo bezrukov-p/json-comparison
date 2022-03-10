@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 public class DiffBetweenScriptsForUI {
 
-    List<ScriptFieldsWithColorsForUI> entriesDifferingOnLeft;
-    List<ScriptFieldsWithColorsForUI> entriesDifferingOnRight;
+    private List<ScriptFieldsWithColorsForUI> entriesDifferingOnLeft;
+    private List<ScriptFieldsWithColorsForUI> entriesDifferingOnRight;
 
-    List<ScriptFieldsForUI> entriesInCommon;
-    List<ScriptFieldsForUI> entriesOnlyOnLeft;
-    List<ScriptFieldsForUI> entriesOnlyOnRight;
+    private List<ScriptFieldsForUI> entriesInCommon;
+    private List<ScriptFieldsForUI> entriesOnlyOnLeft;
+    private List<ScriptFieldsForUI> entriesOnlyOnRight;
 
 
     {

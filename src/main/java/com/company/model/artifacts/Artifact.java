@@ -6,7 +6,6 @@ import lombok.Data;
 
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 public class Artifact {
@@ -21,7 +20,7 @@ public class Artifact {
     private Hashes hashes;
     private List<String> file;
 
-    public boolean ComparisonByMandateFields(Artifact artifact) {
+    public boolean comparisonByMandateFields(Artifact artifact) {
         if (targetRepository != null && mvn != null &&
                 artifact.getTargetRepository() != null && artifact.getMvn() != null) {
             if (targetRepository.equals(artifact.getTargetRepository()) && mvn.equals(artifact.getMvn()))

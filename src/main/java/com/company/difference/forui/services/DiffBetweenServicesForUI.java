@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 public class DiffBetweenServicesForUI {
 
-    List<ServiceFieldsWithColorsForUI> entriesDifferingOnLeft;
-    List<ServiceFieldsWithColorsForUI> entriesDifferingOnRight;
+    private List<ServiceFieldsWithColorsForUI> entriesDifferingOnLeft;
+    private List<ServiceFieldsWithColorsForUI> entriesDifferingOnRight;
 
-    List<ServiceFieldsForUI> entriesInCommon;
-    List<ServiceFieldsForUI> entriesOnlyOnLeft;
-    List<ServiceFieldsForUI> entriesOnlyOnRight;
+    private List<ServiceFieldsForUI> entriesInCommon;
+    private List<ServiceFieldsForUI> entriesOnlyOnLeft;
+    private List<ServiceFieldsForUI> entriesOnlyOnRight;
 
     {
         entriesDifferingOnLeft = new ArrayList<>();

@@ -9,7 +9,7 @@ import java.util.Map;
 @Data
 public class ParametersServicesFieldsWithColorsForUI {
     // строка - цвет
-    Map<String, String> fields;
+    private Map<String, String> fields;
 
     {
         fields = new LinkedHashMap<>();

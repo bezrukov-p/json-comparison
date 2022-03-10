@@ -42,7 +42,7 @@ public class DiffBetweenScripts {
             Iterator<Script> itr2 = scriptsSet2.iterator();
             while(itr2.hasNext()) {
                 Script script2 = itr2.next();
-                if (script1.ComparisonByMandateFields(script2)) {
+                if (script1.comparisonByMandateFields(script2)) {
                     entriesDifferingOnLeft.add(script1);
                     entriesDifferingOnRight.add(script2);
                     itr1.remove();
