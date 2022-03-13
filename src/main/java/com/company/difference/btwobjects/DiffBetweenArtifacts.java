@@ -29,10 +29,10 @@ public class DiffBetweenArtifacts {
 
     public DiffBetweenArtifacts(List<Artifact> artifacts1, List<Artifact> artifacts2) {
 
-        Set<Artifact> artifacts1Type1 = new LinkedHashSet<>();
-        Set<Artifact> artifacts1Type2 = new LinkedHashSet<>();
-        Set<Artifact> artifacts2Type1 = new LinkedHashSet<>();
-        Set<Artifact> artifacts2Type2 = new LinkedHashSet<>();
+        List<Artifact> artifacts1Type1 = new LinkedList<>();
+        List<Artifact> artifacts1Type2 = new LinkedList<>();
+        List<Artifact> artifacts2Type1 = new LinkedList<>();
+        List<Artifact> artifacts2Type2 = new LinkedList<>();
 
         for(Artifact artifact : artifacts1) {
             if (artifact.getMvn() != null)

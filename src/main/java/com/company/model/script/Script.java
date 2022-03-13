@@ -18,12 +18,8 @@ public class Script {
     private String url;
 
     public boolean comparisonByMandateFields(Script script) {
-        if (this.scriptName.equals(script.getScriptName()) &&
-                this.url.equals(script.getUrl())) {
-            return true;
-        }
-        else
-            return false;
+        return this.scriptName.equals(script.getScriptName()) &&
+                this.url.equals(script.getUrl());
     }
 
     public String fieldsToJsonString() {

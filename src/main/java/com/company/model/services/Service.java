@@ -27,12 +27,8 @@ public class Service {
     private Hashes hashes;
 
     public boolean comparisonByMandateFields(Service service) {
-        if (this.serviceName.equals(service.getServiceName()) &&
+        return this.serviceName.equals(service.getServiceName()) &&
                 this.artifactType.equals(service.getArtifactType()) &&
-                this.dockerRegistry.equals(service.getDockerRegistry())) {
-            return true;
-        }
-        else
-            return false;
+                this.dockerRegistry.equals(service.getDockerRegistry());
     }
 }

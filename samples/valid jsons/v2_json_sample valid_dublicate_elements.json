@@ -1,0 +1,161 @@
+{
+    "metadata": {
+        "description": {
+            "version": 2
+        },
+        "application": {
+            "name": "application_name1321"
+        }
+    },
+    "services": [
+        {
+            "service-short-name": "YELLOW",
+            "service_name": "test-service-232111",
+            "artifact_type": "zip11",
+            "docker_registry":"docker.io:1234532131",
+            "docker_image_name": "busybox3222",
+            "docker_tag": "1.33.02",
+            "force": false,
+            "github_repository": "https://github.com/mirror/busyboxs",
+            "github_branch": "master22",
+            "github_hash": "qwerty123456789qwerty123456789qwerty111q1321",
+            "hashes": {
+                "sha1": "749d65718qwec394eae890e7137898419b48b021",
+                "sha256": "5123772326b5821234a130987930e1c46cvbnf10ce768199d56e4b874dfghjkl111"
+            }
+        },
+        {
+            "service-short-name": "YELLOW",
+            "service_name": "test-service-232222",
+            "artifact_type": "zip11",
+            "docker_registry":"docker.io:1234532131",
+            "docker_image_name": "busybox3222",
+            "docker_tag": "1.33.02",
+            "force": false,
+            "github_repository": "https://github.com/mirror/busyboxs",
+            "github_branch": "master22",
+            "github_hash": "qwerty123456789qwerty123456789qwerty111q1321",
+            "hashes": {
+                "sha1": "749d65718qwec394eae890e7137898419b48b021",
+                "sha256": "5123772326b5821234a130987930e1c46cvbnf10ce768199d56e4b874dfghjkl111"
+            }
+        }
+    ],
+    "artifacts": [
+        {
+            "mvn": [
+                {
+                    "groupId": "log4j",
+                    "artifactId": "log4j",
+                    "version": "1.2.17",
+                    "service_name": "test-service-1",
+                    "classifier": "sources",
+                    "mvn_type": "pom",
+                    "mvn_repository": "https://repo1.maven.org/maven2",
+                    "hashes": {
+                        "sha1": "4123456f0f1erc9791fgfc5928c0d89a0bf31ae9",
+                        "sha256": "hfyt975s4444f71f2ae76dfab1c51bf3cc9e55bi89d4e73944f54d8ed56ad28c"
+                    }
+                },
+                {
+                    "groupId": "log4j",
+                    "artifactId": "log4j",
+                    "version": "1.2.17",
+                    "service_name": "test-service-1 poryadok",
+                    "classifier": "sources",
+                    "mvn_type": "pom",
+                    "mvn_repository": "https://repo1.maven.org/maven2",
+                    "hashes": {
+                        "sha1": "4123456f0f1erc9791fgfc5928c0d89a0bf31ae9",
+                        "sha256": "hfyt975s4444f71f2ae76dfab1c51bf3cc9e55bi89d4e73944f54d8ed56ad28c"
+                    }
+                },
+                {
+                    "groupId": "log4j",
+                    "artifactId": "log4j",
+                    "version": "1.2.17",
+                    "service_name": "test-service-1",
+                    "classifier": "sources",
+                    "mvn_type": "pom",
+                    "mvn_repository": "https://repo1.maven.org/maven2",
+                    "hashes": {
+                        "sha1": "4123456f0f1erc9791fgfc5928c0d89a0bf31ae9",
+                        "sha256": "hfyt975s4444f71f2ae76dfab1c51bf3cc9e55bi89d4e73944f54d8ed56ad28c"
+                    }
+                }
+            ],
+            "target_repository": "mvn"
+        },
+        {
+            "service-short-name": "TEST_2",
+            "service_name": "111",
+            "hashes": {
+                "sha1": "5t8a614b22f1806f53ed68b1e68a2d3849130c15",
+                "sha256": "e5nbyucce66bf62e142cf3430c137ac5f0c82b81f3f6099457a523afe3375916"
+            },
+            "file": [
+                "https://nodejs.org/dist/node-v0.6.13.tar.gz"
+            ],
+            "target_repository": "fileRED"
+        },
+        {
+            "service-short-name": "TEST_2",
+            "service_name": "111",
+            "hashes": {
+                "sha1": "5t8a614b22f1806f53ed68b1e68a2d3849130c15",
+                "sha256": "e5nbyucce66bf62e142cf3430c137ac5f0c82b81f3f6099457a523afe3375916"
+            },
+            "file": [
+                "https://nodejs.org/dist/node-v0.6.13.tar.gz"
+            ],
+            "target_repository": "fileRED"
+        }
+    ],
+    "script": [
+        {
+            "service-short-name": "mongocl",
+            "start-point": "start-point.sh",
+            "end-point": "end-point.sh",
+            "script_name": "WHITE",
+            "hashes": {
+                "sha1": "87jf7b9f6055bd924fd83e63ab1e0f16a57680dd",
+                "sha256": "4di75ghj3d976b05b30ce3ce683b561d2bc726eb183e089dd80c8c9ae0ddb195"
+            },
+            "url": "https://fastdl.mongodb.org/mongocli/mongocli_1.12.0_windows_x86_64.zip"
+        },
+        {
+            "service-short-name": "mongocl",
+            "start-point": "start-point.sh",
+            "end-point": "end-point.sh",
+            "script_name": "WHITE",
+            "hashes": {
+                "sha1": "87jf7b9f6055bd924fd83e63ab1e0f16a57680dd",
+                "sha256": "4di75ghj3d976b05b30ce3ce683b561d2bc726eb183e089dd80c8c9ae0ddb195"
+            },
+            "url": "https://fastdl.mongodb.org/mongocli/mongocli_1.12.0_windows_x86_64.zip"
+        }
+    ],
+    "parameters": {
+        "common": {
+            "some-other-param": "test2",
+            "some-else-param1": "test3",
+            "some-param": "YELLOW"
+        },
+        "services": {
+            "service_name_1": {																		
+                "some-third-param": "test4",															
+				"some-third-param-3": "test8"															
+            },
+			"service_name_2": {
+                "some-third-param-white2": "test222",
+                "some-third-param-yellow": "test5",
+                "some-third-param-red": "test2",
+                "some-third-param-white": "test2"
+
+            },
+			"service_name": {																		
+                "some-third-param-3": "test4"															
+            }
+        }
+    }
+}

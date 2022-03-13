@@ -22,24 +22,24 @@ public class DiffBetweenScripts {
     }
 
     public DiffBetweenScripts(List<Script> scripts1, List<Script> scripts2) {
-        Set<Script> scriptsSet1 = new LinkedHashSet<>(scripts1);
-        Set<Script> scriptsSet2 = new LinkedHashSet<>(scripts2);
+        List<Script> scriptsCopy1 = new LinkedList<>(scripts1);
+        List<Script> scriptsCopy2 = new LinkedList<>(scripts2);
 
-        Iterator<Script> itr = scriptsSet1.iterator();
+        Iterator<Script> itr = scriptsCopy1.iterator();
         while (itr.hasNext()) {
             Script script = itr.next();
-            if(scriptsSet2.contains(script)) {
+            if(scriptsCopy2.contains(script)) {
                 entriesInCommon.add(script);
                 itr.remove();
-                scriptsSet2.remove(script);
+                scriptsCopy2.remove(script);
             }
         }
 
-        Iterator<Script> itr1 = scriptsSet1.iterator();
+        Iterator<Script> itr1 = scriptsCopy1.iterator();
 
         while(itr1.hasNext()) {
             Script script1 = itr1.next();
-            Iterator<Script> itr2 = scriptsSet2.iterator();
+            Iterator<Script> itr2 = scriptsCopy2.iterator();
             while(itr2.hasNext()) {
                 Script script2 = itr2.next();
                 if (script1.comparisonByMandateFields(script2)) {
@@ -53,8 +53,8 @@ public class DiffBetweenScripts {
         }
 
 
-        entriesOnlyOnLeft.addAll(scriptsSet1);
-        entriesOnlyOnRight.addAll(scriptsSet2);
+        entriesOnlyOnLeft.addAll(scriptsCopy1);
+        entriesOnlyOnRight.addAll(scriptsCopy2);
     }
 
 }

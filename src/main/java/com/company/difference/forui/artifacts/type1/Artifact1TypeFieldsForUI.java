@@ -19,7 +19,7 @@ public class Artifact1TypeFieldsForUI {
     }
 
     public Artifact1TypeFieldsForUI(Artifact artifact) {
-        Set<Mvn> mvns = artifact.getMvn();
+        List<Mvn> mvns = artifact.getMvn();
         for(Mvn m : mvns) {
             mvn.add(new MvnFieldsForUI(m));
         }

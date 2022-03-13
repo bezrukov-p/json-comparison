@@ -111,6 +111,7 @@
                         "sha256": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e"
                     }
                 }
+                ]
         }, {
             "service_name": "jenkins-2.223",
             "hashes": {
