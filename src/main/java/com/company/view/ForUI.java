@@ -1,9 +1,6 @@
 package com.company.view;
 
-import com.company.difference.btwobjects.DiffBetweenArtifacts;
-import com.company.difference.btwobjects.DiffBetweenParametersServices;
-import com.company.difference.btwobjects.DiffBetweenScripts;
-import com.company.difference.btwobjects.DiffBetweenServices;
+import com.company.difference.btwobjects.*;
 import com.company.difference.forui.ComparisonResultForUI;
 import com.company.difference.forui.artifacts.DiffBetweenArtifactsForUI;
 import com.company.difference.forui.parameters.common.DiffBetweenParametersCommonForUI;
@@ -90,7 +87,9 @@ public class ForUI {
         model.addAttribute("isCommonLeftExists", (jsonObj1.getParameters().getCommon() != null));
         model.addAttribute("isCommonRightExists", (jsonObj2.getParameters().getCommon() != null));
         comparisonResultForUI.setDiffBetweenParametersCommonForUI(
-                new DiffBetweenParametersCommonForUI(jsonObj1.getParameters().getCommon(), jsonObj2.getParameters().getCommon()));
+                new DiffBetweenParametersCommonForUI(
+                        new DiffBetweenParametersCommon(
+                                jsonObj1.getParameters().getCommon(), jsonObj2.getParameters().getCommon())));
 
         //для parameters/services
         model.addAttribute("isServicesOnlyOnLeft", (

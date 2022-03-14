@@ -1,5 +1,6 @@
 package com.company.difference.forui.parameters.common;
 
+import com.company.difference.btwobjects.DiffBetweenParametersCommon;
 import lombok.Data;
 
 import java.util.Iterator;
@@ -16,47 +17,31 @@ public class DiffBetweenParametersCommonForUI {
         paramsRight = new LinkedHashMap<>();
     }
 
-    public DiffBetweenParametersCommonForUI(Map<String, String> left, Map<String, String> right) {
-        if (left == null)
-            left = new LinkedHashMap<>();
-        if (right == null)
-            right = new LinkedHashMap<>();
-
-        Map<String, String> l = new LinkedHashMap<>(left);
-        Map<String, String> r = new LinkedHashMap<>(right);
-
-        Iterator<String> itr = l.keySet().iterator();
-        while(itr.hasNext()) {
-            String key = itr.next();
-            if (r.containsKey(key) && !l.get(key).equals(r.get(key))) {
-                paramsLeft.put("\"" + key + "\": \"" + l.get(key) + "\"", "orange");
-                paramsRight.put("\"" + key + "\": \"" + r.get(key) + "\"", "orange");
-                itr.remove();
-                r.remove(key);
-            }
+    public DiffBetweenParametersCommonForUI(DiffBetweenParametersCommon diffBetweenParametersCommon) {
+        Map<String, String> diffLeft = diffBetweenParametersCommon.getEntriesDifferingOnLeft();
+        for (String key : diffLeft.keySet()) {
+            paramsLeft.put("\"" + key + "\": \"" + diffLeft.get(key) + "\"", "orange");
         }
 
-        itr = l.keySet().iterator();
-        while(itr.hasNext()) {
-            String key = itr.next();
-            if (r.containsKey(key) && l.get(key).equals(r.get(key))) {
-                paramsLeft.put("\"" + key + "\": \"" + l.get(key) + "\"", "white");
-                paramsRight.put("\"" + key + "\": \"" + r.get(key) + "\"", "white");
-                itr.remove();
-                r.remove(key);
-            }
+        Map<String, String> diffRight = diffBetweenParametersCommon.getEntriesDifferingOnRight();
+        for (String key : diffRight.keySet()) {
+            paramsRight.put("\"" + key + "\": \"" + diffRight.get(key) + "\"", "orange");
         }
 
-        itr = l.keySet().iterator();
-        while(itr.hasNext()) {
-            String key = itr.next();
-            paramsLeft.put("\"" + key + "\": \"" + l.get(key) + "\"", "red");
+        Map<String, String> common = diffBetweenParametersCommon.getEntriesInCommon();
+        for (String key : common.keySet()) {
+            paramsLeft.put("\"" + key + "\": \"" + common.get(key) + "\"", "white");
+            paramsRight.put("\"" + key + "\": \"" + common.get(key) + "\"", "white");
         }
 
-        itr = r.keySet().iterator();
-        while(itr.hasNext()) {
-            String key = itr.next();
-            paramsRight.put("\"" + key + "\": \"" + r.get(key) + "\"", "green");
+        Map<String, String> onlyLeft = diffBetweenParametersCommon.getEntriesOnlyOnLeft();
+        for (String key : onlyLeft.keySet()) {
+            paramsLeft.put("\"" + key + "\": \"" + onlyLeft.get(key) + "\"", "red");
+        }
+
+        Map<String, String> onlyRight = diffBetweenParametersCommon.getEntriesOnlyOnRight();
+        for (String key : onlyRight.keySet()) {
+            paramsRight.put("\"" + key + "\": \"" + onlyRight.get(key) + "\"", "green");
         }
     }
 }

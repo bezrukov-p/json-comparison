@@ -34,12 +34,6 @@ public class MainController {
     public String uploadFile(@RequestParam("file1") MultipartFile file1,
                            @RequestParam("file2") MultipartFile file2,
                            Model model) throws IOException {
-        //10MB
-        if (file1.getSize() > 10485760L || file2.getSize() > 10485760L){
-            model.addAttribute("file1size", file1.getName().concat(" весит более 10MB"));
-            model.addAttribute("file2size", file2.getName().concat(" весит более 10MB"));
-            return "main";
-        }
 
         File jsonFile1 = FileActions.uploadFile(file1);
         File jsonFile2 = FileActions.uploadFile(file2);
