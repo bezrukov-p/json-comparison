@@ -22,8 +22,8 @@ public class DiffBetweenServices {
     }
 
     public DiffBetweenServices(List<Service> services1, List<Service> services2) {
-        //копия сервисов
 
+        //копия сервисов
         List<Service> servicesCopy1 = new LinkedList<>(services1);
         List<Service> servicesCopy2 = new LinkedList<>(services2);
 
