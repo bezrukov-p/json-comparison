@@ -10,7 +10,7 @@
 <a href="/main"> main</a>
 
 <div th:class="left-div-style2">
-    <p th:if="${!m1.isEmpty()}"><span th:text="${file1}"></span> не валидный </p>
+    <p th:if="${!m1.isEmpty()}"><span th:text="${file1}"></span> невалидный </p>
     <p th:if="${m1.isEmpty()}"><span th:text="${file1}"></span> валидный </p>
     <hr>
     <th:block th:each="vm : ${m1}">
@@ -19,7 +19,7 @@
 </div>
 
 <div th:class="right-div-style2">
-    <p th:if="${!m2.isEmpty()}"><span th:text="${file2}"></span> не валидный </p>
+    <p th:if="${!m2.isEmpty()}"><span th:text="${file2}"></span> невалидный </p>
     <p th:if="${m2.isEmpty()}"><span th:text="${file2}"></span> валидный </p>
     <hr>
     <th:block th:each="vm : ${m2}">
